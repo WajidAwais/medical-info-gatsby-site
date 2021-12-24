@@ -6,7 +6,9 @@ import { ThemeContext } from '../../context/ThemeContext'
 const renderQuantity = (orders, count) => {
   const actions = { changeOrders: jest.fn() }
   render(
-    <ThemeContext.Provider value={{ state: { orders, translations: [] }, actions }}>
+    <ThemeContext.Provider
+      value={{ state: { orders, translations: [] }, actions }}
+    >
       <Quantity id="guide" count={count} />
     </ThemeContext.Provider>
   )
@@ -15,7 +17,10 @@ const renderQuantity = (orders, count) => {
 
 describe('Quantity', () => {
   it('removes the line when the last copy is taken away', () => {
-    const actions = renderQuantity([{ id: 'guide', title: 'Guide', count: 1 }], 1)
+    const actions = renderQuantity(
+      [{ id: 'guide', title: 'Guide', count: 1 }],
+      1
+    )
     fireEvent.click(screen.getAllByRole('button')[0])
     expect(actions.changeOrders).toHaveBeenCalledWith([])
   })

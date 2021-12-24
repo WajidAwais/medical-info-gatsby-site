@@ -57,7 +57,7 @@ export default function EventsTemplate({
   useEffect(() => {
     const language = getSelectedLanguage(state)
     setTitle(`${pageTitle} - ${getTitlePart(language.name)} ${language.region}`)
-  }, [])
+  }, [pageTitle, state])
 
   const navLinks = prepareNavLinks(pages, languageCode)
   return (

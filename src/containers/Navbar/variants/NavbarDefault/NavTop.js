@@ -44,7 +44,7 @@ const NavTop = ({ languageCode = 'en', languages = [] }) => {
     if (searchClicked) {
       searchRef.current.focus()
     }
-  }, [searchClicked])
+  }, [searchClicked, searchRef])
 
   return (
     <div className="navbarDefault__top-navbar">

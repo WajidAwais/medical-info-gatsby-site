@@ -20,7 +20,7 @@ const ConfirmModal = ({ languageCode = DEFAULT_LANGUAGE }) => {
   useEffect(() => {
     const isConfirm = !!localStorage.getItem(`isConfirm_${languageCode}`)
     if (!isConfirm) setShowModal(true)
-  })
+  }, [languageCode])
 
   const handleConfirm = () => {
     localStorage.setItem(`isConfirm_${languageCode}`, 'true')

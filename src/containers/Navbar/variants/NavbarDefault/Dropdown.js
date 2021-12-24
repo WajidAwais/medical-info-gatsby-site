@@ -45,7 +45,7 @@ export default function Dropdown({
     )
     setIsTouchInput(false)
     setHasClicked(false)
-  }, [hasClicked, state.orders])
+  }, [hasClicked, state.orders, languageCode])
 
   let translatedItemBasket = ''
   if (state.translations.length) {
@@ -60,10 +60,10 @@ export default function Dropdown({
         onTouchStart={() => {
           setIsTouchInput(true)
         }}
-        onMouseEnter={(event) => {
+        onMouseEnter={() => {
           setIsOverButton(true)
         }}
-        onMouseLeave={(event) => {
+        onMouseLeave={() => {
           setIsOverButton(false)
         }}
         onClick={() => {
@@ -82,10 +82,10 @@ export default function Dropdown({
       {isOpen && (
         <button
           className="basket-items no-items"
-          onMouseEnter={(event) => {
+          onMouseEnter={() => {
             setIsOverList(true)
           }}
-          onMouseLeave={(event) => {
+          onMouseLeave={() => {
             setIsOverList(false)
           }}
         >
@@ -147,10 +147,10 @@ export default function Dropdown({
         onTouchStart={() => {
           setIsTouchInput(true)
         }}
-        onMouseEnter={(event) => {
+        onMouseEnter={() => {
           setIsOverButton(true)
         }}
-        onMouseLeave={(event) => {
+        onMouseLeave={() => {
           setIsOverButton(false)
         }}
         onClick={() => {
@@ -167,10 +167,10 @@ export default function Dropdown({
       {isOpen && (
         <button
           className="language-container"
-          onMouseEnter={(event) => {
+          onMouseEnter={() => {
             setIsOverList(true)
           }}
-          onMouseLeave={(event) => {
+          onMouseLeave={() => {
             setIsOverList(false)
           }}
         >

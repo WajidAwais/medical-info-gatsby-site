@@ -7,7 +7,7 @@ import { pathForSlug } from '../utils/paths'
 import { getTitlePart } from '../utils/helpers'
 import SEO from '../components/SEO'
 
-const siteMapTemplate = ({ pageContext: { languageCode, path }, data }) => {
+const siteMapTemplate = ({ pageContext: { languageCode }, data }) => {
   const {
     pages,
     siteMap: { nodes: links },

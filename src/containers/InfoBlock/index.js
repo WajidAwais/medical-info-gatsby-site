@@ -5,7 +5,7 @@ import getStyles from '../../utils/getStyles'
 import renderLinkedItem from '../../utils/renderLinkedItem'
 import SocialSharing from '../SocialSharing'
 
-const InfoBlock = ({ data, id, code, socialSharing = null }) => {
+const InfoBlock = ({ data, id, socialSharing = null }) => {
   const { backgroundColor, paddingTop, paddingBottom } = getStyles(data)
   const {
     content: { modular_content: systemCode },

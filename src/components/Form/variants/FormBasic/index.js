@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { prepareTranslations } from '../../../../utils/prepareTranslations'
 import { useTheme } from '../../../../hooks/useTheme'
-import { navigate } from 'gatsby'
 
 const marketoScriptId = 'mktoForms'
 
 export default function FormBasic({ id }) {
-  const { state, actions } = useTheme()
+  const { state } = useTheme()
   const [isLoaded, setIsLoaded] = useState(false)
   const [isFormVisible, setIsVisible] = useState(true)
 
@@ -31,7 +30,7 @@ export default function FormBasic({ id }) {
         '769-NOZ-917',
         id,
         function (form) {
-          form.onSuccess(function (values, followUpUrl) {
+          form.onSuccess(function () {
             setIsVisible(false)
             return false
           })

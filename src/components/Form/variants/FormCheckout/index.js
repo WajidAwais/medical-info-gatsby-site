@@ -26,7 +26,7 @@ const FormCheckout = ({
       return order.locale === languageCode
     })
     setOrders(tmpOrders)
-  }, [state.orders])
+  }, [state.orders, languageCode])
 
   const handleChangeCheckoutStep = (step) => {
     changeCheckoutStep(step)
@@ -172,7 +172,7 @@ const FormCheckout = ({
               handleSubmit(values)
             }}
           >
-            {(formik) => (
+            {() => (
               <Form className="form checkout">
                 <div className="gap-2 grid-md-2 mb-2">
                   <Text

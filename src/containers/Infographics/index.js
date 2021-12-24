@@ -4,7 +4,6 @@ import { graphql } from 'gatsby'
 
 const Infographics = ({ data }) => {
   const {
-    title: { value: title },
     layout: { value: layoutType },
     infographics: { value: infographics },
   } = data
@@ -35,10 +34,9 @@ const Infographics = ({ data }) => {
               infographics.map((infographic) => {
                 const { elements, id, system } = infographic
                 return (
-                  <div className="infographicscol__column">
+                  <div className="infographicscol__column" key={id}>
                     <Infographic
                       data={elements}
-                      key={id}
                       system={system}
                       className="infographicscol"
                     />

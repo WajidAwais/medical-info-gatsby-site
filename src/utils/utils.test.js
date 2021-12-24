@@ -128,7 +128,12 @@ describe('getStyles edge cases', () => {
 
 describe('prepareExternalLinks', () => {
   const external = [
-    { elements: { title: { value: 'Privacy' }, url: { value: 'https://x.test/p' } } },
+    {
+      elements: {
+        title: { value: 'Privacy' },
+        url: { value: 'https://x.test/p' },
+      },
+    },
   ]
   const pageLinks = [{ title: 'Home', url: '/', type: 'page', show: true }]
 

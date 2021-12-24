@@ -35,7 +35,7 @@ const Quantity = ({ count, id }) => {
       {showBanner && (
         <div className=" order-banner">
           <span>
-            "{selectedOrder?.title}"{' '}
+            &ldquo;{selectedOrder?.title}&rdquo;{' '}
             {translatedItemCheckout?.QuantityUpdated
               ? translatedItemCheckout?.QuantityUpdated
               : ' quantity has been updated'}

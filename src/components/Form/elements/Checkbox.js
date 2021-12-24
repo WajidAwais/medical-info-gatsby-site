@@ -2,7 +2,7 @@ import React from 'react'
 import { useField, ErrorMessage } from 'formik'
 
 const Checkbox = ({ label, ...props }) => {
-  const [field, meta] = useField(props)
+  const [field] = useField(props)
   return (
     <fieldset className="form__fieldset">
       <div className="form__control">

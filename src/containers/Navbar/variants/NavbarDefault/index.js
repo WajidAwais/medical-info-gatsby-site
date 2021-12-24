@@ -45,7 +45,7 @@ const NavbarDefault = ({ navLinks, languageCode = 'en', languages = [] }) => {
     window.addEventListener('scroll', toggleVisibility)
 
     return () => window.removeEventListener('scroll', toggleVisibility)
-  }, [])
+  }, [actions])
 
   useEffect(() => {
     const tmpOrders = state.orders.filter((order) => {
@@ -56,7 +56,7 @@ const NavbarDefault = ({ navLinks, languageCode = 'en', languages = [] }) => {
         return acc + val.count
       }, 0)
     )
-  }, [state.orders])
+  }, [state.orders, languageCode])
   return (
     <nav
       className={`navbarDefault${!mobile ? headerClass : ''}`}

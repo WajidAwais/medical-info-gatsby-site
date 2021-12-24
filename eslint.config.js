@@ -25,8 +25,8 @@ module.exports = [
     settings: { react: { version: 'detect' } },
     rules: {
       ...react.configs.recommended.rules,
-      ...react.configs['jsx-runtime'].rules,
       'react/prop-types': 'off',
+      'no-unused-vars': ['error', { ignoreRestSiblings: true }],
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
     },

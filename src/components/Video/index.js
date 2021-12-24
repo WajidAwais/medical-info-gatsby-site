@@ -52,6 +52,7 @@ const Video = ({ url, title, thumbnail = [], id, code }) => {
           <a
             href={`https://www.youtube.com/embed/${url}`}
             target="_blank"
+            rel="noreferrer"
             className="video__wrapper-banner"
           >
             <span>

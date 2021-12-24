@@ -72,7 +72,9 @@ describe('ClientSearch', () => {
 
   it('runs the query passed in the URL', () => {
     window.history.pushState({}, '', '/search/?s=visit')
-    render(<ClientSearch data={data} engine={engine} translation={translation} />)
+    render(
+      <ClientSearch data={data} engine={engine} translation={translation} />
+    )
     expect(screen.getByRole('link', { name: 'Resources' })).toBeInTheDocument()
     window.history.pushState({}, '', '/')
   })

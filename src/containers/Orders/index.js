@@ -14,7 +14,7 @@ const Orders = ({ languageCode = 'en' }) => {
       return order.locale === languageCode
     })
     setOrders(tmpOrders)
-  }, [state.orders])
+  }, [state.orders, languageCode])
 
   let translatedItemCheckout = ''
   if (state.translations.length) {

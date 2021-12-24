@@ -60,7 +60,7 @@ const Model = ({
       {showBanner && (
         <div className=" order-banner">
           <span>
-            "{title}"
+            &ldquo;{title}&rdquo;
             {translatedItemCheckout?.AddedToCart
               ? translatedItemCheckout?.AddedToCart
               : ' has been added to your cart!'}

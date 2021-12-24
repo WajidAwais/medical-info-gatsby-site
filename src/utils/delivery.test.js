@@ -11,8 +11,14 @@ const translationsBody = {
   },
   // Delivery API object key order is not guaranteed to match the item order.
   modular_content: {
-    t_basket: { system: { name: 'Basket' }, elements: { value: { value: '{"Title":"Basket"}' } } },
-    t_search: { system: { name: 'Search' }, elements: { value: { value: '{"Title":"Search"}' } } },
+    t_basket: {
+      system: { name: 'Basket' },
+      elements: { value: { value: '{"Title":"Basket"}' } },
+    },
+    t_search: {
+      system: { name: 'Search' },
+      elements: { value: { value: '{"Title":"Search"}' } },
+    },
   },
 }
 
@@ -67,7 +73,10 @@ describe('fetchTranslations', () => {
     global.fetch = jest
       .fn()
       .mockResolvedValueOnce({ ok: false, status: 503 })
-      .mockResolvedValueOnce({ ok: true, json: () => Promise.resolve(translationsBody) })
+      .mockResolvedValueOnce({
+        ok: true,
+        json: () => Promise.resolve(translationsBody),
+      })
     await expect(fetchTranslations('en')).rejects.toThrow('503')
     await expect(fetchTranslations('en')).resolves.toHaveLength(2)
   })

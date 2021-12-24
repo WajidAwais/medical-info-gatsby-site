@@ -135,48 +135,48 @@ class ClientSearch extends Component {
 
     return (
       <div className="container">
-            <h1>{translation.Title}</h1>
-            <div className="search">
-              <div>
-                <form onSubmit={this.handleSubmit}>
-                  <input
-                    type="search"
-                    className="search__search_field"
-                    id="Search"
-                    value={searchQuery}
-                    onChange={this.onSearchData}
-                    placeholder={translation.Placeholder}
-                  />
-                  {searchQuery && (
-                    <label className="search__results_stats">
-                      {translation.Results}: 1-{queryResults.length}{' '}
-                      {translation.Of} {queryResults.length} {translation.For}{' '}
-                      {searchQuery}
-                    </label>
-                  )}
-                </form>
-              </div>
-              <div className="search__results">
-                {queryResults.map((item, index) => {
-                  return (
-                    <article className="search__item" key={index}>
-                      <h3>
-                        <Link to={item.url} className="search__title">
-                          {item.name}
-                        </Link>
-                      </h3>
-                      <p className="search__description">
-                        {item.body ? truncateText(item.body) : item.title}
-                      </p>
-                      <p className="search__tag">{item.name}</p>
-                    </article>
-                  )
-                })}
-                {searchQuery && queryResults.length === 0 && (
-                  <p>{translation.Notfound}</p>
-                )}
-              </div>
-            </div>
+        <h1>{translation.Title}</h1>
+        <div className="search">
+          <div>
+            <form onSubmit={this.handleSubmit}>
+              <input
+                type="search"
+                className="search__search_field"
+                id="Search"
+                value={searchQuery}
+                onChange={this.onSearchData}
+                placeholder={translation.Placeholder}
+              />
+              {searchQuery && (
+                <label className="search__results_stats">
+                  {translation.Results}: 1-{queryResults.length}{' '}
+                  {translation.Of} {queryResults.length} {translation.For}{' '}
+                  {searchQuery}
+                </label>
+              )}
+            </form>
+          </div>
+          <div className="search__results">
+            {queryResults.map((item, index) => {
+              return (
+                <article className="search__item" key={index}>
+                  <h3>
+                    <Link to={item.url} className="search__title">
+                      {item.name}
+                    </Link>
+                  </h3>
+                  <p className="search__description">
+                    {item.body ? truncateText(item.body) : item.title}
+                  </p>
+                  <p className="search__tag">{item.name}</p>
+                </article>
+              )
+            })}
+            {searchQuery && queryResults.length === 0 && (
+              <p>{translation.Notfound}</p>
+            )}
+          </div>
+        </div>
       </div>
     )
   }

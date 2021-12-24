@@ -20,7 +20,7 @@ export default function NotFound({ data }) {
     // localStorage only exists in the browser, so read the preference after mount.
     const language = getSelectedLanguage(state)
     setSelectedLanguage(language.name)
-  }, [])
+  }, [state])
 
   const filteredPages = pages.nodes.filter(
     (node) => node.system.language === selectedLanguage

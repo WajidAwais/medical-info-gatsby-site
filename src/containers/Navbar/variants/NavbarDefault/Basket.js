@@ -22,7 +22,7 @@ const Basket = ({ languageCode = DEFAULT_LANGUAGE, setBasketMobile }) => {
       return order.locale === languageCode
     })
     setOrders(tmpOrders)
-  }, [state.orders])
+  }, [state.orders, languageCode])
 
   const toggleBasketMobile = () => {
     setBasketMobile(false)

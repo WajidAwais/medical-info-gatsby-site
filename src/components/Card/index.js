@@ -35,7 +35,7 @@ const Card = ({ data, system }) => {
             system: { id: contentId, codename: contentCode, type },
           } = item
           switch (type) {
-            case 'video':
+            case 'video': {
               const {
                 video_id: { value: video_id },
                 thumbnail: { value: thumbnail },
@@ -52,7 +52,11 @@ const Card = ({ data, system }) => {
                   <div className="card__video-footer">
                     <p>{title}</p>
                     <div className="card__video-footer-watch-now">
-                      <a href={`https://youtu.be/${video_id}`} target="_blank">
+                      <a
+                        href={`https://youtu.be/${video_id}`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         {' '}
                         {translatedItemCard?.Link}{' '}
                       </a>
@@ -61,7 +65,8 @@ const Card = ({ data, system }) => {
                   </div>
                 </div>
               )
-            case 'image':
+            }
+            case 'image': {
               const {
                 image: {
                   value: [image],
@@ -69,6 +74,7 @@ const Card = ({ data, system }) => {
                 image_alt: { value: alt },
               } = elements
               return <Image image={image} alt={alt} key={index} />
+            }
             default:
               return <h1 key={index}>{type}</h1>
           }

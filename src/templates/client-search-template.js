@@ -39,7 +39,7 @@ export default function SearchTemplate({ pageContext, data }) {
       title = 'Search - Treating HF Valve'
     }
     setPageTitle(title)
-  }, [])
+  }, [state])
 
   return (
     <Layout languageCode={languageCode} navLinks={navLinks} footerData={footer}>
