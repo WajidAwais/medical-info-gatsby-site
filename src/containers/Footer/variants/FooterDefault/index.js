@@ -50,10 +50,11 @@ const FooterDefault = ({
                       onClick={() =>
                         window.open(`${source.name}${path}`, '_blank', 'share')
                       }
-                      rel="noreferrer"
                       className="icon"
                     >
-                      <span className="d-none">{source.codename}</span>
+                      <span className="visually-hidden">
+                        Share on {source.codename}
+                      </span>
                       {source.codename === 'facebook' && (
                         <RiFacebookCircleFill />
                       )}
@@ -63,7 +64,7 @@ const FooterDefault = ({
                   )
                 })}
                 <a href={email} className="icon">
-                  <span className="d-none">email</span>
+                  <span className="visually-hidden">Share by email</span>
                   <MdEmail />
                 </a>
               </div>

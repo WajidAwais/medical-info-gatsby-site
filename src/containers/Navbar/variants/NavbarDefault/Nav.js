@@ -37,8 +37,9 @@ const Nav = ({
             }}
           >
             <input
-              type="text"
+              type="search"
               name="search"
+              aria-label="Search the site"
               placeholder={
                 translatedItemSearch?.Placeholder
                   ? translatedItemSearch?.Placeholder

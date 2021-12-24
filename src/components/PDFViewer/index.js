@@ -212,6 +212,7 @@ const PDFViewer = ({
                                 <button
                                   onClick={handleQuantityDecrease}
                                   className="button-minus-quantity"
+                                  aria-label="Decrease quantity"
                                 >
                                   -
                                 </button>
@@ -228,6 +229,7 @@ const PDFViewer = ({
                                 <button
                                   onClick={handleQuantityIncrease}
                                   className="button-plus-quantity"
+                                  aria-label="Increase quantity"
                                 >
                                   +
                                 </button>

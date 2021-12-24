@@ -32,7 +32,7 @@ describe('PDFViewer', () => {
       modalData('visit_guide', 'Visit guide'),
       existing
     )
-    fireEvent.click(screen.getByRole('button', { name: '+' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Increase quantity' }))
     fireEvent.click(screen.getByRole('button', { name: /add to order/i }))
     expect(actions.changeOrders).toHaveBeenCalledWith([
       existing[0],

@@ -67,6 +67,7 @@ export default function NotFound({ data }) {
                 >
                   <input
                     type="search"
+                    aria-label="Search the site"
                     className="search__search_field"
                     id="Search"
                     placeholder={searchTranslation.Placeholder}

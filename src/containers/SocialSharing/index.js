@@ -47,10 +47,11 @@ const SocialSharing = ({
                     onClick={() =>
                       window.open(`${source.name}${path}`, '_blank', 'share')
                     }
-                    rel="noreferrer"
                     className="socialSharing__list-item"
                   >
-                    <span className="d-none">{source.codename}</span>
+                    <span className="visually-hidden">
+                      Share on {source.codename}
+                    </span>
                     {source.codename === 'facebook' && <RiFacebookCircleFill />}
                     {source.codename === 'twitter' && <RiTwitterFill />}
                     {source.codename === 'linkedin' && <RiLinkedinBoxFill />}
@@ -58,7 +59,7 @@ const SocialSharing = ({
                 )
               })}
               <a href={email} className="socialSharing__list-item">
-                <span className="d-none">mail</span>
+                <span className="visually-hidden">Share by email</span>
                 <MdEmail />
               </a>
             </div>

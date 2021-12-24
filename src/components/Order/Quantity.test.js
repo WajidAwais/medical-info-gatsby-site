@@ -21,14 +21,14 @@ describe('Quantity', () => {
       [{ id: 'guide', title: 'Guide', count: 1 }],
       1
     )
-    fireEvent.click(screen.getAllByRole('button')[0])
+    fireEvent.click(screen.getByRole('button', { name: 'Decrease quantity' }))
     expect(actions.changeOrders).toHaveBeenCalledWith([])
   })
 
   it('increments without mutating the current orders', () => {
     const orders = [{ id: 'guide', title: 'Guide', count: 1 }]
     const actions = renderQuantity(orders, 1)
-    fireEvent.click(screen.getAllByRole('button')[1])
+    fireEvent.click(screen.getByRole('button', { name: 'Increase quantity' }))
     expect(actions.changeOrders).toHaveBeenCalledWith([
       { id: 'guide', title: 'Guide', count: 2 },
     ])

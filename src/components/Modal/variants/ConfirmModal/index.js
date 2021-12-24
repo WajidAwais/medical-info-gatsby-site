@@ -30,15 +30,22 @@ const ConfirmModal = ({ languageCode = DEFAULT_LANGUAGE }) => {
   return (
     showModal && (
       <div className="backdrop">
-        <div className="confirmModal" aria-modal="true" role="dialog">
+        <div
+          className="confirmModal"
+          aria-modal="true"
+          role="dialog"
+          aria-describedby="confirm-modal-body"
+        >
           <div className="confirmModal__content">
-            <div className="confirmModal__body">
+            <div className="confirmModal__body" id="confirm-modal-body">
               {languageCode === 'en'
                 ? 'Content relating to TMTT is intended for healthcare professionals. Click OK to confirm you are a healthcare professional and proceed.'
                 : 'Die Inhalte auf TTMT sind für Angehörige medizinischer Fachkreise gemacht. Klicken Sie auf OK um zu bestätigen, dass Sie ein Angehöriger medizinischer Fachkreise sind um fortzufahren.'}
             </div>
             <div className="confirmModal__footer">
               <button
+                // The dialog blocks the page until confirmed, so start there.
+                autoFocus
                 onClick={handleConfirm}
                 className="confirmModal__btn btn btn-crimson"
               >

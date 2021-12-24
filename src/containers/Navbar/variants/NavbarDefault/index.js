@@ -83,6 +83,7 @@ const NavbarDefault = ({ navLinks, languageCode = 'en', languages = [] }) => {
               <button
                 onClick={toggleBasketMobile}
                 className="navbarDefault__cart-mobile"
+                aria-label={`Basket, ${count} item${count === 1 ? '' : 's'}`}
               >
                 <RiShoppingBasketLine />
                 <span className="quantity">{count}</span>
@@ -92,6 +93,7 @@ const NavbarDefault = ({ navLinks, languageCode = 'en', languages = [] }) => {
               className="navbarDefault__toggle"
               onClick={toggleMobile}
               aria-expanded={mobile ? 'true' : 'false'}
+              aria-label={mobile ? 'Close menu' : 'Open menu'}
             >
               {mobile ? <FiX /> : <FiMenu />}
             </button>

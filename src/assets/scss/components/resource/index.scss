@@ -16,10 +16,24 @@
     font-size: $font-size-small;
   }
   &__image {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
     cursor: pointer;
   }
   &__title {
     cursor: pointer;
+    button {
+      padding: 0;
+      border: 0;
+      background: none;
+      font: inherit;
+      color: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
     @include md {
       &:hover {
         color: $color-crimson;

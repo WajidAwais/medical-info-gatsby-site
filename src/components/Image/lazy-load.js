@@ -21,7 +21,7 @@ const LazyImg = ({ datasrc, alt }) => {
     <img ref={placeholderRef} src={datasrc} alt={alt || ''} />
   ) : (
     <>
-      <img ref={placeholderRef} />
+      <img ref={placeholderRef} alt="" />
     </>
   )
 }

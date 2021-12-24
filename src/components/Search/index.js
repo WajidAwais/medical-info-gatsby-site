@@ -141,6 +141,7 @@ class ClientSearch extends Component {
             <form onSubmit={this.handleSubmit}>
               <input
                 type="search"
+                aria-label={translation.Title}
                 className="search__search_field"
                 id="Search"
                 value={searchQuery}

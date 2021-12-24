@@ -20,6 +20,7 @@ const Intro = ({ data, socialSharing }) => {
                 image: {
                   value: [image],
                 },
+                image_alt: { value: imageAlt },
               },
             },
           ],
@@ -52,7 +53,7 @@ const Intro = ({ data, socialSharing }) => {
         <RichTextElement value={description} />
       </div>
       <div className="col-md-5 d-none d-md-block">
-        <Image image={image} className="intro__image" />
+        <Image image={image} alt={imageAlt} className="intro__image" />
       </div>
     </section>
   )

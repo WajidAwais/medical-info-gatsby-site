@@ -50,11 +50,17 @@ const NavTop = ({ languageCode = 'en', languages = [] }) => {
     <div className="navbarDefault__top-navbar">
       <ul>
         {!searchClicked && (
-          <li onClick={() => setSearchClicked(true)}>
-            <MdSearch />
-            {translatedItemSearch?.Search
-              ? translatedItemSearch?.Search
-              : 'Search'}
+          <li>
+            <button
+              type="button"
+              className="navbarDefault__search-toggle"
+              onClick={() => setSearchClicked(true)}
+            >
+              <MdSearch aria-hidden="true" />
+              {translatedItemSearch?.Search
+                ? translatedItemSearch?.Search
+                : 'Search'}
+            </button>
           </li>
         )}
         {searchClicked && (
@@ -66,8 +72,9 @@ const NavTop = ({ languageCode = 'en', languages = [] }) => {
               }}
             >
               <input
-                type="text"
+                type="search"
                 name="search"
+                aria-label="Search the site"
                 placeholder={
                   translatedItemSearch?.Placeholder
                     ? translatedItemSearch?.Placeholder

@@ -51,11 +51,19 @@ const Quantity = ({ count, id }) => {
         </div>
       )}
       <div className="quantity__controls">
-        <button className="quantity__btn" onClick={() => updateCount(-1)}>
+        <button
+          className="quantity__btn"
+          aria-label="Decrease quantity"
+          onClick={() => updateCount(-1)}
+        >
           <FaMinus />
         </button>
         <div className="quantity__count">{count}</div>
-        <button className="quantity__btn" onClick={() => updateCount(1)}>
+        <button
+          className="quantity__btn"
+          aria-label="Increase quantity"
+          onClick={() => updateCount(1)}
+        >
           <FaPlus />
         </button>
       </div>

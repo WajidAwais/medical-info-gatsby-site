@@ -94,13 +94,20 @@ const Pdf = ({
           </Link>
         </div>
       )}
-      <div className="resource__image" onClick={() => setShowModal(true)}>
+      <button
+        type="button"
+        className="resource__image"
+        aria-label={`Preview ${title}`}
+        onClick={() => setShowModal(true)}
+      >
         <Image image={image} layout="fullWidth" alt={alt} />
-      </div>
+      </button>
       <div className="resource__body">
         <div className="resource__type">{name}</div>
-        <h4 className="resource__title" onClick={() => setShowModal(true)}>
-          {title}
+        <h4 className="resource__title">
+          <button type="button" onClick={() => setShowModal(true)}>
+            {title}
+          </button>
         </h4>
         {description}
       </div>
