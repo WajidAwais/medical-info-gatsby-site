@@ -18,22 +18,43 @@ const translation = {
 }
 
 const data = [
-  { id: '1', name: 'Resources', title: 'Visit guide', body: 'Prepare for the appointment', url: '/resources' },
-  { id: '2', name: 'Home', title: 'Welcome', body: 'Symptom diary tips', url: '/' },
+  {
+    id: '1',
+    name: 'Resources',
+    title: 'Visit guide',
+    body: 'Prepare for the appointment',
+    url: '/resources',
+  },
+  {
+    id: '2',
+    name: 'Home',
+    title: 'Welcome',
+    body: 'Symptom diary tips',
+    url: '/',
+  },
 ]
 
 describe('ClientSearch', () => {
   it('finds documents by prefix and links to their page', () => {
-    render(<ClientSearch data={data} engine={engine} translation={translation} />)
+    render(
+      <ClientSearch data={data} engine={engine} translation={translation} />
+    )
     fireEvent.change(screen.getByPlaceholderText('Search the site'), {
       target: { value: 'diar' },
     })
-    expect(screen.getByRole('link', { name: 'Home' })).toHaveAttribute('href', '/')
-    expect(screen.queryByRole('link', { name: 'Resources' })).not.toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Home' })).toHaveAttribute(
+      'href',
+      '/'
+    )
+    expect(
+      screen.queryByRole('link', { name: 'Resources' })
+    ).not.toBeInTheDocument()
   })
 
   it('says when nothing matches', () => {
-    render(<ClientSearch data={data} engine={engine} translation={translation} />)
+    render(
+      <ClientSearch data={data} engine={engine} translation={translation} />
+    )
     fireEvent.change(screen.getByPlaceholderText('Search the site'), {
       target: { value: 'zebra' },
     })

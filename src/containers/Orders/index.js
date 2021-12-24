@@ -24,27 +24,27 @@ const Orders = ({ languageCode = 'en' }) => {
 
   return (
     <div className="section container">
-      {orders.length !== 0 &&
+      {orders.length !== 0 && (
         <div className="grid-md-12 orderBasic">
           <div className="col-md-9 orderBasic__item-contain">
-          <h3 className="mb-1">
-            {translatedItemCheckout?.Title
-              ? translatedItemCheckout?.Title
-              : 'My Orders'}
-          </h3>
+            <h3 className="mb-1">
+              {translatedItemCheckout?.Title
+                ? translatedItemCheckout?.Title
+                : 'My Orders'}
+            </h3>
           </div>
           <div className="col-md-3 orderBasic__quantity title">
-          <h3 className="mb-1">
-            {translatedItemCheckout?.Quantity
-              ? translatedItemCheckout?.Quantity
-              : 'Quantity'}
-          </h3>
+            <h3 className="mb-1">
+              {translatedItemCheckout?.Quantity
+                ? translatedItemCheckout?.Quantity
+                : 'Quantity'}
+            </h3>
           </div>
           {orders.map((order, index) => {
             return <OrderBasic key={index} data={order} />
           })}
         </div>
-      }
+      )}
       {orders.length !== 0 && (
         <Link
           aria-label="Next page, to checkout"
@@ -54,7 +54,7 @@ const Orders = ({ languageCode = 'en' }) => {
           {translatedItemCheckout?.NextStep
             ? translatedItemCheckout?.NextStep
             : 'Next'}
-          <FaChevronRight/>
+          <FaChevronRight />
         </Link>
       )}
       {!orders.length && (

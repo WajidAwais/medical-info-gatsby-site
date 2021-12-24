@@ -127,7 +127,10 @@ const Pdf = ({
         )}
         {price.length !== 0 && (
           <button className="resource__purchase" onClick={updateOrders}>
-            <BsCart /> {translatedItemResource?.Free ? translatedItemResource?.Free : 'Free'}
+            <BsCart />{' '}
+            {translatedItemResource?.Free
+              ? translatedItemResource?.Free
+              : 'Free'}
           </button>
         )}
       </div>

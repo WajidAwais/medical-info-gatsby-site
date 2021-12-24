@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { IoIosArrowUp } from 'react-icons/io'
 
 const ScrollToTop = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const isBrowser = () => typeof window !== "undefined"
+  const [isVisible, setIsVisible] = useState(false)
+  const isBrowser = () => typeof window !== 'undefined'
   const scrollToTop = () => {
-    if(isBrowser) {
+    if (isBrowser) {
       window.scrollTo({
         top: 0,
-        behavior: "smooth"
-      });
+        behavior: 'smooth',
+      })
     }
   }
 
@@ -17,22 +17,28 @@ const ScrollToTop = () => {
     // Button is displayed after scrolling for 500 pixels
     const toggleVisibility = () => {
       if (window.pageYOffset > 500) {
-        setIsVisible(true);
+        setIsVisible(true)
       } else {
-        setIsVisible(false);
+        setIsVisible(false)
       }
-    };
+    }
 
-    window.addEventListener("scroll", toggleVisibility);
+    window.addEventListener('scroll', toggleVisibility)
 
-    return () => window.removeEventListener("scroll", toggleVisibility);
-  }, []);
+    return () => window.removeEventListener('scroll', toggleVisibility)
+  }, [])
 
   return (
-    isVisible &&
-      <button onClick={scrollToTop} className="footerDefault__scroll-top" title="Scroll back to top" aria-label="Scroll back to top">
+    isVisible && (
+      <button
+        onClick={scrollToTop}
+        className="footerDefault__scroll-top"
+        title="Scroll back to top"
+        aria-label="Scroll back to top"
+      >
         <IoIosArrowUp />
       </button>
+    )
   )
 }
 

@@ -39,7 +39,8 @@ const linkedCodenamesInRichText = (html) =>
   )
 
 const loadFixtures = (dir) => {
-  const read = (file) => JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8'))
+  const read = (file) =>
+    JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8'))
   const types = read('content-types.json')
   const { languages, items } = read('content.json')
   return { types, languages, items }
@@ -270,7 +271,9 @@ const schemaFor = (types) => {
       .map(([codename, kind]) => {
         const valueType = ELEMENT_VALUE_TYPES[kind]
         if (!valueType) {
-          throw new Error(`Unknown element kind "${kind}" on ${type}.${codename}`)
+          throw new Error(
+            `Unknown element kind "${kind}" on ${type}.${codename}`
+          )
         }
         return `${codename}: ${valueType}`
       })

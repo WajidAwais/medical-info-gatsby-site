@@ -1,7 +1,7 @@
 export const stripScripts = (s) => {
-  let div = typeof document !== `undefined` ? document.createElement('div') : null
-  if(!div)
-    return
+  let div =
+    typeof document !== `undefined` ? document.createElement('div') : null
+  if (!div) return
   div.innerHTML = s
   let scripts = div.getElementsByTagName('script')
   let noscripts = div.getElementsByTagName('noscript')

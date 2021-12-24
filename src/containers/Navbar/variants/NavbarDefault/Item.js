@@ -4,7 +4,8 @@ import { Link } from 'gatsby'
 const Item = ({ link, index }) => {
   const { title, url, type, show } = link
   return (
-    type === 'page' && show &&
+    type === 'page' &&
+    show && (
       <li className="navbarDefault__nav-item" key={index}>
         <Link
           to={url}
@@ -14,6 +15,7 @@ const Item = ({ link, index }) => {
           {title}
         </Link>
       </li>
+    )
   )
 }
 

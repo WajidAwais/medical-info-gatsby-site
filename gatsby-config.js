@@ -40,7 +40,10 @@ const contentSource = useFixtures
       },
     }
 
-if (!useFixtures && (!process.env.GATSBY_KONTENT_PROJECT_ID || !languageCodenames.length)) {
+if (
+  !useFixtures &&
+  (!process.env.GATSBY_KONTENT_PROJECT_ID || !languageCodenames.length)
+) {
   throw new Error(
     'Set GATSBY_KONTENT_PROJECT_ID and GATSBY_KONTENT_LANGUAGE_CODENAMES (see .env.example), or build with KONTENT_MOCK=1.'
   )
@@ -54,7 +57,7 @@ module.exports = {
     url: `https://treating-hf-valves.com/`,
     twitterUsername: `@EdwardsLifesci`,
     image: `/treatinghf-twitter.png`,
-    trustArc: `https://consent.trustarc.com/notice?domain=edwards_ccpa.com&c=teconsent&js=nj&noticeType=bb&gtm=1`
+    trustArc: `https://consent.trustarc.com/notice?domain=edwards_ccpa.com&c=teconsent&js=nj&noticeType=bb&gtm=1`,
   },
   plugins: [
     contentSource,

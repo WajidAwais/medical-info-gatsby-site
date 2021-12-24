@@ -1,7 +1,10 @@
 require('dotenv').config()
 
 const path = require('path')
-const { SEARCH_INDEX_QUERY, buildSearchIndex } = require('./gatsby/search-index')
+const {
+  SEARCH_INDEX_QUERY,
+  buildSearchIndex,
+} = require('./gatsby/search-index')
 const { isHomeSlug, pageSlug } = require('./src/utils/paths')
 
 const SITE_PAGES_QUERY = `

@@ -65,7 +65,10 @@ const publishStaticFiles = (publicDir, { path: dir, projectId }) => {
   const deliveryItems = buildDeliveryItems(fixtures)
   const apiRoot = path.join(publicDir, 'mock-delivery', projectId)
 
-  writeJson(path.join(apiRoot, 'languages'), languagesResponse(fixtures.languages))
+  writeJson(
+    path.join(apiRoot, 'languages'),
+    languagesResponse(fixtures.languages)
+  )
   // The browser asks for items/translations?language=xx; a static server
   // ignores the query string, so the default language's copy is served.
   const translations = deliveryResponse(
@@ -83,11 +86,17 @@ const publishStaticFiles = (publicDir, { path: dir, projectId }) => {
 }
 
 exports.onPostBootstrap = ({ store }, options) => {
-  publishStaticFiles(path.join(store.getState().program.directory, 'public'), options)
+  publishStaticFiles(
+    path.join(store.getState().program.directory, 'public'),
+    options
+  )
 }
 
 exports.onPostBuild = ({ store }, options) => {
-  publishStaticFiles(path.join(store.getState().program.directory, 'public'), options)
+  publishStaticFiles(
+    path.join(store.getState().program.directory, 'public'),
+    options
+  )
 }
 
 // Fixture builds must not ship the client's logo, so swap it for a neutral one.

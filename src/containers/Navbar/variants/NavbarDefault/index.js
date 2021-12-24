@@ -24,26 +24,28 @@ const NavbarDefault = ({ navLinks, languageCode = 'en', languages = [] }) => {
     setBasketMobile(!basketMobile)
   }
 
-  const isBrowser = () => typeof window !== "undefined"
+  const isBrowser = () => typeof window !== 'undefined'
 
   useEffect(() => {
     // initialize orders from localStorage
-    const orders = localStorage.getItem("orders") ? JSON.parse(localStorage.getItem("orders") ?? []) : [];
+    const orders = localStorage.getItem('orders')
+      ? JSON.parse(localStorage.getItem('orders') ?? [])
+      : []
     actions.changeOrders(orders)
 
     // make header sticky after scrolling for 100 pixels
     const toggleVisibility = () => {
       if (isBrowser() && window.pageYOffset > 100) {
-        setHeaderClass(' navBarSticky');
+        setHeaderClass(' navBarSticky')
       } else {
         setHeaderClass('')
       }
     }
 
-    window.addEventListener("scroll", toggleVisibility);
+    window.addEventListener('scroll', toggleVisibility)
 
-    return () => window.removeEventListener("scroll", toggleVisibility);
-  }, []);
+    return () => window.removeEventListener('scroll', toggleVisibility)
+  }, [])
 
   useEffect(() => {
     const tmpOrders = state.orders.filter((order) => {
@@ -56,15 +58,18 @@ const NavbarDefault = ({ navLinks, languageCode = 'en', languages = [] }) => {
     )
   }, [state.orders])
   return (
-    <nav className={`navbarDefault${!mobile ? headerClass : ''}`} role="navigation">
+    <nav
+      className={`navbarDefault${!mobile ? headerClass : ''}`}
+      role="navigation"
+    >
       <div className="navbarDefault__container">
         <div className="navbarDefault__top">
-          {mobile
-            ? <div></div>
-            :
+          {mobile ? (
+            <div></div>
+          ) : (
             <>
               <NavTop languageCode={languageCode} languages={languages} />
-              <Link to={languageCode === "en" ? `/` : `/${languageCode}/`}>
+              <Link to={languageCode === 'en' ? `/` : `/${languageCode}/`}>
                 <img
                   src={logo}
                   className="navbarDefault__logo"
@@ -72,19 +77,24 @@ const NavbarDefault = ({ navLinks, languageCode = 'en', languages = [] }) => {
                 />
               </Link>
             </>
-          }
+          )}
           <div className="navbarDefault__toggle-contain">
-          {!mobile && <button onClick={toggleBasketMobile} className="navbarDefault__cart-mobile"><RiShoppingBasketLine/><span className="quantity">{count}</span></button>}
-          <button
-            className="navbarDefault__toggle"
-            onClick={toggleMobile}
-            aria-expanded={mobile ? 'true' : 'false'}
-          >
-            {mobile
-              ? <FiX />
-              : <FiMenu />
-            }
-          </button>
+            {!mobile && (
+              <button
+                onClick={toggleBasketMobile}
+                className="navbarDefault__cart-mobile"
+              >
+                <RiShoppingBasketLine />
+                <span className="quantity">{count}</span>
+              </button>
+            )}
+            <button
+              className="navbarDefault__toggle"
+              onClick={toggleMobile}
+              aria-expanded={mobile ? 'true' : 'false'}
+            >
+              {mobile ? <FiX /> : <FiMenu />}
+            </button>
           </div>
         </div>
         <Nav
@@ -95,7 +105,12 @@ const NavbarDefault = ({ navLinks, languageCode = 'en', languages = [] }) => {
           languageCode={languageCode}
           languages={languages}
         />
-        {basketMobile && <Basket languageCode={languageCode} setBasketMobile={setBasketMobile} />}
+        {basketMobile && (
+          <Basket
+            languageCode={languageCode}
+            setBasketMobile={setBasketMobile}
+          />
+        )}
       </div>
     </nav>
   )

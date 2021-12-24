@@ -1,10 +1,9 @@
 export const navLinks = [
   {
-    name: "Home",
-    url: "/",
+    name: 'Home',
+    url: '/',
     links: [],
   },
 ]
 
-export const footerLinks = [
-]
+export const footerLinks = []

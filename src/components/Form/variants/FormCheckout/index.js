@@ -10,7 +10,11 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import * as Yup from 'yup'
 import { prepareTranslations } from '../../../../utils/prepareTranslations'
 
-const FormCheckout = ({ step = 2, changeCheckoutStep, languageCode = 'en' }) => {
+const FormCheckout = ({
+  step = 2,
+  changeCheckoutStep,
+  languageCode = 'en',
+}) => {
   const { state, actions } = useTheme()
   const [orders, setOrders] = useState([])
   const [isLoading, setIsLoading] = useState(false)
@@ -133,135 +137,148 @@ const FormCheckout = ({ step = 2, changeCheckoutStep, languageCode = 'en' }) => 
     <>
       {!isValid && orders.length > 0 && (
         <>
-        <button
-          className="btn btn-ghost mb-1"
-          onClick={() => {handleChangeCheckoutStep(step - 1);navigate(languageCode === 'en' ? `/basket` : `/${languageCode}/warenkorb`);}}
-        >
-          <FaChevronLeft className="mr-50" />{' '}
-          {translatedItemCheckout?.Back
-            ? translatedItemCheckout?.Back
-            : 'Back'}
-        </button>
-        <Formik
-          initialValues={
-            form || {
-              firstName: '',
-              lastName: '',
-              address1: '',
-              address2: '',
-              city: '',
-              country: '',
-              county: '',
-              email: '',
-              zipcode: '',
-              occupation: '',
-              consent: false,
+          <button
+            className="btn btn-ghost mb-1"
+            onClick={() => {
+              handleChangeCheckoutStep(step - 1)
+              navigate(
+                languageCode === 'en' ? `/basket` : `/${languageCode}/warenkorb`
+              )
+            }}
+          >
+            <FaChevronLeft className="mr-50" />{' '}
+            {translatedItemCheckout?.Back
+              ? translatedItemCheckout?.Back
+              : 'Back'}
+          </button>
+          <Formik
+            initialValues={
+              form || {
+                firstName: '',
+                lastName: '',
+                address1: '',
+                address2: '',
+                city: '',
+                country: '',
+                county: '',
+                email: '',
+                zipcode: '',
+                occupation: '',
+                consent: false,
+              }
             }
-          }
-          validationSchema={validate}
-          onSubmit={(values) => {
-            handleSubmit(values)
-          }}
-        >
-          {(formik) => (
-            <Form className="form checkout">
-              <div className="gap-2 grid-md-2 mb-2">
-                <Text label={firstName} name="firstName" type="text" required />
-                <Text label={surname} name="lastName" type="text" required />
-              </div>
+            validationSchema={validate}
+            onSubmit={(values) => {
+              handleSubmit(values)
+            }}
+          >
+            {(formik) => (
+              <Form className="form checkout">
+                <div className="gap-2 grid-md-2 mb-2">
+                  <Text
+                    label={firstName}
+                    name="firstName"
+                    type="text"
+                    required
+                  />
+                  <Text label={surname} name="lastName" type="text" required />
+                </div>
 
-              <div className="gap-2 grid-md-2 mb-2">
-                <Text
-                  label={address}
-                  name="address1"
-                  type="text"
-                  required
-                  placeholder={
-                    translatedItemCheckoutForm?.AddressPlaceholder
-                      ? translatedItemCheckoutForm?.AddressPlaceholder
-                      : 'House number and street address'
-                  }
-                />
-                <Text
-                  label={apartment}
-                  name="address2"
-                  type="text"
-                  placeholder={apartment}
-                />
-              </div>
-              <div className="gap-2 grid-md-2 mb-2">
-                <Text label={city} name="city" type="text" required />
-                <Select
-                  name="country"
-                  label={country}
-                  required
-                  options={countries}
-                />
-              </div>
+                <div className="gap-2 grid-md-2 mb-2">
+                  <Text
+                    label={address}
+                    name="address1"
+                    type="text"
+                    required
+                    placeholder={
+                      translatedItemCheckoutForm?.AddressPlaceholder
+                        ? translatedItemCheckoutForm?.AddressPlaceholder
+                        : 'House number and street address'
+                    }
+                  />
+                  <Text
+                    label={apartment}
+                    name="address2"
+                    type="text"
+                    placeholder={apartment}
+                  />
+                </div>
+                <div className="gap-2 grid-md-2 mb-2">
+                  <Text label={city} name="city" type="text" required />
+                  <Select
+                    name="country"
+                    label={country}
+                    required
+                    options={countries}
+                  />
+                </div>
 
-              <div className="gap-2 grid-md-2 mb-2">
-                <Text
-                  name="county"
-                  label={
-                    translatedItemCheckoutForm?.Canton
-                      ? translatedItemCheckoutForm?.Canton
-                      : 'Canton (optional)'
-                  }
-                  type="text"
-                />
-                <Text name="email" label={email} type="email" required />
-              </div>
+                <div className="gap-2 grid-md-2 mb-2">
+                  <Text
+                    name="county"
+                    label={
+                      translatedItemCheckoutForm?.Canton
+                        ? translatedItemCheckoutForm?.Canton
+                        : 'Canton (optional)'
+                    }
+                    type="text"
+                  />
+                  <Text name="email" label={email} type="email" required />
+                </div>
 
-              <div className="gap-2 grid-md-2 mb-2">
-                <Text name="zipcode" label={postcode} type="text" required />
-              </div>
-              <div className="gap-2 grid-1 mb-2">
-                <Select
-                  name="occupation"
-                  label={occupation}
-                  options={occupations}
-                  required
-                />
-              </div>
-              <div className="grid-1">
-                <Checkbox
-                  name="consent"
-                  label={
-                    translatedItemCheckoutForm?.NewsUpdates
-                      ? translatedItemCheckoutForm?.NewsUpdates
-                      : 'Receive news and update from Edwards Lifesciences each month (optional)'
-                  }
-                />
-                {languageCode === 'en' ? (
-                  <p className="form__fieldset-small">
-                    {translatedItemCheckoutForm?.AgreeToTerms
-                      ? translatedItemCheckoutForm?.AgreeToTerms
-                      : 'By providing your personal information, you agree to allow Edwards Lifesciences and its agents to use this information to communicate with you in the future, including information about products, services, events, and programs. Edwards Lifesciences and its agents will not sell, rent, or otherwise distribute your name and any personally identifiable information outside of Edwards Lifesciences and its agents. Edwards Lifesciences will use your information in accordance with the Edwards Privacy Policy.'}
-                  </p>
-                ) : (
-                  <p></p>
-                )}
-              </div>
-              <button
-                type="submit"
-                aria-label="Next page, to confirmation"
-                className="btn btn-crimson btn-next mt-2 mb-2"
-              >
-                {translatedItemCheckoutForm?.Next
-                  ? translatedItemCheckoutForm?.Next
-                  : 'Next'}
-                <FaChevronRight />
-              </button>
-            </Form>
-          )}
-        </Formik>
+                <div className="gap-2 grid-md-2 mb-2">
+                  <Text name="zipcode" label={postcode} type="text" required />
+                </div>
+                <div className="gap-2 grid-1 mb-2">
+                  <Select
+                    name="occupation"
+                    label={occupation}
+                    options={occupations}
+                    required
+                  />
+                </div>
+                <div className="grid-1">
+                  <Checkbox
+                    name="consent"
+                    label={
+                      translatedItemCheckoutForm?.NewsUpdates
+                        ? translatedItemCheckoutForm?.NewsUpdates
+                        : 'Receive news and update from Edwards Lifesciences each month (optional)'
+                    }
+                  />
+                  {languageCode === 'en' ? (
+                    <p className="form__fieldset-small">
+                      {translatedItemCheckoutForm?.AgreeToTerms
+                        ? translatedItemCheckoutForm?.AgreeToTerms
+                        : 'By providing your personal information, you agree to allow Edwards Lifesciences and its agents to use this information to communicate with you in the future, including information about products, services, events, and programs. Edwards Lifesciences and its agents will not sell, rent, or otherwise distribute your name and any personally identifiable information outside of Edwards Lifesciences and its agents. Edwards Lifesciences will use your information in accordance with the Edwards Privacy Policy.'}
+                    </p>
+                  ) : (
+                    <p></p>
+                  )}
+                </div>
+                <button
+                  type="submit"
+                  aria-label="Next page, to confirmation"
+                  className="btn btn-crimson btn-next mt-2 mb-2"
+                >
+                  {translatedItemCheckoutForm?.Next
+                    ? translatedItemCheckoutForm?.Next
+                    : 'Next'}
+                  <FaChevronRight />
+                </button>
+              </Form>
+            )}
+          </Formik>
         </>
       )}
       {isValid && form && orders.length > 0 && (
         <>
           <button
             className="btn btn-ghost mb-1"
-            onClick={() => {setIsValid(false); handleChangeCheckoutStep(step - 1)}}
+            onClick={() => {
+              setIsValid(false)
+              handleChangeCheckoutStep(step - 1)
+            }}
           >
             <FaChevronLeft className="mr-50" />{' '}
             {translatedItemCheckout?.Back

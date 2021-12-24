@@ -31,46 +31,46 @@ const Basket = ({ languageCode = DEFAULT_LANGUAGE, setBasketMobile }) => {
   return (
     <div className="basketMobile">
       <div className="basketMobile__container">
-        <div className="basketMobile__close"><FiX onClick={toggleBasketMobile}/></div>
+        <div className="basketMobile__close">
+          <FiX onClick={toggleBasketMobile} />
+        </div>
         {orders.length === 0 ? (
-            <div className="basketMobile__empty">
-              <p>
-                {translatedItemBasket?.EmptyBasket
-                  ? translatedItemBasket?.EmptyBasket
-                  : 'No resources have been added to the basket yet.'
-                }
-              </p>
-            </div>
-          ) : (
-            <div className="basketMobile__items">
-              {orders.map((order, key) => {
-                return (
-                  <div key={key} className="basketMobile__items-item">
-                    <ImageElement
-                      image={order.image}
-                      alt={`${order.title} image`}
-                      className="basketMobile__items-item-image"
-                    />
-                    <p className="basketMobile__items-item-description">{order.title}</p>
-                  </div>
-                )})
+          <div className="basketMobile__empty">
+            <p>
+              {translatedItemBasket?.EmptyBasket
+                ? translatedItemBasket?.EmptyBasket
+                : 'No resources have been added to the basket yet.'}
+            </p>
+          </div>
+        ) : (
+          <div className="basketMobile__items">
+            {orders.map((order, key) => {
+              return (
+                <div key={key} className="basketMobile__items-item">
+                  <ImageElement
+                    image={order.image}
+                    alt={`${order.title} image`}
+                    className="basketMobile__items-item-image"
+                  />
+                  <p className="basketMobile__items-item-description">
+                    {order.title}
+                  </p>
+                </div>
+              )
+            })}
+            <Link
+              className="basketMobile__basket-link"
+              to={
+                languageCode === 'en' ? '/basket' : `/${languageCode}/warenkorb`
               }
-              <Link
-                className="basketMobile__basket-link"
-                to={
-                  languageCode === 'en'
-                    ? '/basket'
-                    : `/${languageCode}/warenkorb`
-                }
-              >
-                {translatedItemBasket?.Link
-                  ? translatedItemBasket?.Link
-                  : 'Go to Basket'}{' '}
-                <RiArrowRightSLine />
-              </Link>
-            </div>
-          )
-        }
+            >
+              {translatedItemBasket?.Link
+                ? translatedItemBasket?.Link
+                : 'Go to Basket'}{' '}
+              <RiArrowRightSLine />
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   )

@@ -58,7 +58,9 @@ describe('prepareNavLinks', () => {
 describe('prepareTranslations', () => {
   it('parses the JSON value stored for a key', () => {
     const translations = [{ key: 'Search', value: '{"Title":"Suche"}' }]
-    expect(prepareTranslations(translations, 'Search')).toEqual({ Title: 'Suche' })
+    expect(prepareTranslations(translations, 'Search')).toEqual({
+      Title: 'Suche',
+    })
     expect(prepareTranslations(translations, 'Basket')).toBeUndefined()
   })
 })
@@ -85,6 +87,10 @@ describe('getStyles', () => {
         paddingTop: { value: [{ codename: 'n3' }] },
         paddingBottom: { value: [] },
       })
-    ).toEqual({ backgroundColor: 'bg-sky-light', paddingTop: 'pt-3', paddingBottom: '' })
+    ).toEqual({
+      backgroundColor: 'bg-sky-light',
+      paddingTop: 'pt-3',
+      paddingBottom: '',
+    })
   })
 })

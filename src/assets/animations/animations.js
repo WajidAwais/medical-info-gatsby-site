@@ -33,12 +33,12 @@ export const modalVariants = {
 }
 
 export const iframeVariant = {
-  width: "100%",
-  height: "100%",
-  display: "block",
-  marginLeft: "auto",
-  marginRight: "auto",
-};
+  width: '100%',
+  height: '100%',
+  display: 'block',
+  marginLeft: 'auto',
+  marginRight: 'auto',
+}
 
 export const backdropVariants = {
   visible: { opacity: 1 },

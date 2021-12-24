@@ -5,7 +5,7 @@ import useWindowDimensions from '../../utils/useWindowDimensions'
 
 const Steps = ({ step }) => {
   const { state } = useTheme()
-  const { width } = useWindowDimensions();
+  const { width } = useWindowDimensions()
   const isMobile = width <= 420
 
   let translatedItemCheckout = ''

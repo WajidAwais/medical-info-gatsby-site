@@ -16,7 +16,11 @@ module.exports = [
       sourceType: 'module',
       parserOptions: { ecmaFeatures: { jsx: true } },
       // Gatsby inlines process.env.GATSBY_* into the browser bundle.
-      globals: { ...globals.browser, process: 'readonly', __PATH_PREFIX__: 'readonly' },
+      globals: {
+        ...globals.browser,
+        process: 'readonly',
+        __PATH_PREFIX__: 'readonly',
+      },
     },
     settings: { react: { version: 'detect' } },
     rules: {

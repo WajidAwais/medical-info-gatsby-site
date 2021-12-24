@@ -48,7 +48,11 @@ describe('fixture transforms', () => {
       type: 'card',
       id: stableId('card_one'),
     })
-    expect(item.elements.title).toEqual({ type: 'text', name: 'title', value: 'Hello' })
+    expect(item.elements.title).toEqual({
+      type: 'text',
+      name: 'title',
+      value: 'Hello',
+    })
     expect(item.elements.media.value).toEqual(['image_one'])
     expect(item.elements.details.modular_content).toEqual(['image_one'])
   })
@@ -108,7 +112,9 @@ describe('fixture transforms', () => {
 
   it('declares one GraphQL type per content type', () => {
     const sdl = schemaFor(types)
-    expect(sdl).toContain('type kontent_item_card implements Node & kontent_item')
+    expect(sdl).toContain(
+      'type kontent_item_card implements Node & kontent_item'
+    )
     expect(sdl).toContain('details: kontent_item_rich_text_element_value')
     expect(sdl).toContain('image: kontent_item_asset_element_value')
   })

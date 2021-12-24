@@ -1,4 +1,8 @@
-const { buildSearchIndex, eventLandingEntries, pageEntries } = require('./search-index')
+const {
+  buildSearchIndex,
+  eventLandingEntries,
+  pageEntries,
+} = require('./search-index')
 
 const system = (codename, type, language = 'en') => ({
   id: `${codename}-id`,
@@ -70,7 +74,12 @@ describe('pageEntries', () => {
       })
     )
 
-    expect(entries.map((e) => e.code)).toEqual(['about', 'block', 'card', 'refs'])
+    expect(entries.map((e) => e.code)).toEqual([
+      'about',
+      'block',
+      'card',
+      'refs',
+    ])
     expect(entries[0]).toMatchObject({
       title: 'Intro title',
       subtitle: 'Intro subtitle',
@@ -102,12 +111,21 @@ describe('pageEntries', () => {
       page('resources', 'resources', { resources: { value: [resources] } })
     )
     expect(entries.map((e) => e.code)).toEqual(['resources', 'guide'])
-    expect(entries[1]).toMatchObject({ title: 'Guide', body: 'A guide', url: '/resources' })
+    expect(entries[1]).toMatchObject({
+      title: 'Guide',
+      body: 'A guide',
+      url: '/resources',
+    })
   })
 
   it('links the home page to the language root', () => {
     const [entry] = pageEntries(
-      page('home', 'herzinsuffizienz-und-ti', { intro: { value: [intro] } }, 'de')
+      page(
+        'home',
+        'herzinsuffizienz-und-ti',
+        { intro: { value: [intro] } },
+        'de'
+      )
     )
     expect(entry.url).toBe('/de/')
   })
@@ -155,6 +173,8 @@ describe('buildSearchIndex', () => {
       },
       eventLandings: { nodes: [] },
     }
-    expect(buildSearchIndex(source, 'de').map((e) => e.code)).toEqual(['de-page'])
+    expect(buildSearchIndex(source, 'de').map((e) => e.code)).toEqual([
+      'de-page',
+    ])
   })
 })

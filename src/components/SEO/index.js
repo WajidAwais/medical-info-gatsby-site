@@ -24,7 +24,7 @@ const SEO = ({ title, description, image, article }) => {
     description: description || defaultDescription,
     image: `${siteUrl}${image || defaultImage}`,
     url: `${siteUrl}${pathname}`,
-    trustArc: `${trustArc}`
+    trustArc: `${trustArc}`,
   }
 
   const { head_scripts, body_scripts, trust_arc } = scripts.elements
@@ -39,7 +39,9 @@ const SEO = ({ title, description, image, article }) => {
 
         {seo.url && <meta property="og:url" content={seo.url} />}
 
-        {(article ? true : null) && <meta property="og:type" content="article" />}
+        {(article ? true : null) && (
+          <meta property="og:type" content="article" />
+        )}
 
         {seo.title && <meta property="og:title" content={seo.title} />}
 
@@ -63,14 +65,15 @@ const SEO = ({ title, description, image, article }) => {
 
         {seo.image && <meta name="twitter:image" content={seo.image} />}
       </Helmet>
-      {trust_arc && trust_arc.value && <Helmet script={[{ src: trust_arc.value, defer: true }]} />}
+      {trust_arc && trust_arc.value && (
+        <Helmet script={[{ src: trust_arc.value, defer: true }]} />
+      )}
       {headScripts && headScripts.length > 0 && <Helmet script={headScripts} />}
-      {bodyScripts && bodyScripts.length > 0 && bodyScripts.map((script, key) => {
-        return (
-          <noscript key={key}>{script.innerHTML}</noscript>
-        )
-      })
-      }
+      {bodyScripts &&
+        bodyScripts.length > 0 &&
+        bodyScripts.map((script, key) => {
+          return <noscript key={key}>{script.innerHTML}</noscript>
+        })}
     </>
   )
 }

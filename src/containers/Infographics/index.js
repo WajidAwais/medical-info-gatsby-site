@@ -11,24 +11,42 @@ const Infographics = ({ data }) => {
 
   return (
     <>
-      {
-        layoutType && layoutType.length === 0 && <div className="infographics">
-          {infographics && infographics.map((infographic) => {
-            const { elements, id, system } = infographic
-            return <Infographic data={elements} key={id} system={system} className="infographics" />
-          })}
+      {layoutType && layoutType.length === 0 && (
+        <div className="infographics">
+          {infographics &&
+            infographics.map((infographic) => {
+              const { elements, id, system } = infographic
+              return (
+                <Infographic
+                  data={elements}
+                  key={id}
+                  system={system}
+                  className="infographics"
+                />
+              )
+            })}
         </div>
-      }
-      {layoutType && layoutType.length > 0 && layoutType[0].name === '2 columns' && <div className="infographicscol">
-        {infographics && infographics.map((infographic) => {
-          const { elements, id, system } = infographic
-          return <div className="infographicscol__column">
-            <Infographic data={elements} key={id} system={system} className="infographicscol" />
-          </div >
-        })
-        }
-      </div>
-      }
+      )}
+      {layoutType &&
+        layoutType.length > 0 &&
+        layoutType[0].name === '2 columns' && (
+          <div className="infographicscol">
+            {infographics &&
+              infographics.map((infographic) => {
+                const { elements, id, system } = infographic
+                return (
+                  <div className="infographicscol__column">
+                    <Infographic
+                      data={elements}
+                      key={id}
+                      system={system}
+                      className="infographicscol"
+                    />
+                  </div>
+                )
+              })}
+          </div>
+        )}
     </>
   )
 }
