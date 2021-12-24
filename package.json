@@ -13,6 +13,7 @@
     "build:fixtures": "KONTENT_MOCK=1 gatsby build",
     "develop:fixtures": "KONTENT_MOCK=1 gatsby develop",
     "serve": "gatsby serve",
+    "serve:fixtures": "KONTENT_MOCK=1 gatsby serve",
     "clean": "gatsby clean",
     "test": "jest",
     "lint": "eslint . && prettier --check \"**/*.{js,json}\"",
