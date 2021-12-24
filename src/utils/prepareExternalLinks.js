@@ -1,20 +1,11 @@
-export const prepareExternalLinks = (external_links, navLinks) => {
-  const tmp = navLinks.filter((link) => {
-    return link.type === 'external'
-  })
-  if (tmp.length > 0) return navLinks
-  let links = navLinks.length > 0 ? navLinks : []
-  external_links.forEach((link) => {
-    const {
-      title: { value: title },
-      url: { value: url },
-    } = link.elements
-    links.push({
-      title: title,
-      url: url,
-      type: 'external',
-      show: true,
-    })
-  })
-  return links
-}
+// Appends the footer's external links to the page links without touching
+// the array the navbar also renders from.
+export const prepareExternalLinks = (externalLinks, navLinks) => [
+  ...navLinks.filter((link) => link.type !== 'external'),
+  ...externalLinks.map(({ elements }) => ({
+    title: elements.title.value,
+    url: elements.url.value,
+    type: 'external',
+    show: true,
+  })),
+]

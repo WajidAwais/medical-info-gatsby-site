@@ -10,10 +10,11 @@ export const prepareNavLinks = (pages) => {
     const {
       system: { type },
     } = page
-    const showInNavigation = !(
-      type !== 'event_landing' &&
-      page.elements.show_in_navigation.value[0].name.toLowerCase() === 'no'
-    )
+    // Event landings have no show_in_navigation element and are always shown.
+    const showInNavigation =
+      type === 'event_landing' ||
+      page.elements.show_in_navigation?.value?.[0]?.name?.toLowerCase() !==
+        'no'
     const path = pagePath(page)
 
     const pageTitle = page.elements.title

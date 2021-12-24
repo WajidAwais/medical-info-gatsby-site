@@ -15,6 +15,14 @@ export const mergeOrders = (orders) =>
     return merged
   }, [])
 
+// Returns new order objects; a count that drops below one removes the line.
+export const changeOrderCount = (orders, id, delta) =>
+  orders
+    .map((order) =>
+      order.id === id ? { ...order, count: order.count + delta } : order
+    )
+    .filter((order) => order.count > 0)
+
 const persist = (key, value) => {
   if (value) localStorage.setItem(key, JSON.stringify(value))
   else localStorage.removeItem(key)

@@ -3,6 +3,7 @@ import { useTheme } from '../../hooks/useTheme'
 import { FaPlus, FaMinus } from 'react-icons/fa'
 import { GrClose } from 'react-icons/gr'
 import { prepareTranslations } from '../../utils/prepareTranslations'
+import { changeOrderCount } from '../../context/ThemeContext'
 
 const Quantity = ({ count, id }) => {
   const { state, actions } = useTheme()
@@ -14,36 +15,21 @@ const Quantity = ({ count, id }) => {
     translatedItemCheckout = prepareTranslations(state.translations, key)
   }
 
-  const handleAdd = () => {
-    const updatedOrders = state.orders.map((order) => {
-      if (order.id === id) {
-        order.count++
-        setSelectedOrder(order)
-      }
-      return order
-    })
-    actions.changeOrders(updatedOrders)
+  const flashBanner = () => {
     setShowBanner(true)
     setTimeout(() => {
       setShowBanner(false)
     }, 3000)
   }
-  const handleRemove = () => {
-    const updatedOrders = state.orders.map((order) => {
-      if (order.id === id) {
-        order.count--
-        setSelectedOrder(order)
-      }
-      return order
-    })
-    actions.changeOrders(updatedOrders)
-    if (count > 1) {
-      setShowBanner(true)
-      setTimeout(() => {
-        setShowBanner(false)
-      }, 3000)
-    }
+
+  const updateCount = (delta) => {
+    const order = state.orders.find((item) => item.id === id)
+    setSelectedOrder(order)
+    actions.changeOrders(changeOrderCount(state.orders, id, delta))
+    // Going below one removes the line, so there is nothing left to flash.
+    if (count + delta > 0) flashBanner()
   }
+
   return (
     <div className="quantity">
       {showBanner && (
@@ -65,11 +51,11 @@ const Quantity = ({ count, id }) => {
         </div>
       )}
       <div className="quantity__controls">
-        <button className="quantity__btn" onClick={handleRemove}>
+        <button className="quantity__btn" onClick={() => updateCount(-1)}>
           <FaMinus />
         </button>
         <div className="quantity__count">{count}</div>
-        <button className="quantity__btn" onClick={handleAdd}>
+        <button className="quantity__btn" onClick={() => updateCount(1)}>
           <FaPlus />
         </button>
       </div>
