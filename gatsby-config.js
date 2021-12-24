@@ -33,7 +33,7 @@ const contentSource = useFixtures
       },
     }
   : {
-      resolve: `@kentico/gatsby-source-kontent`,
+      resolve: `@kontent-ai/gatsby-source`,
       options: {
         projectId: process.env.GATSBY_KONTENT_PROJECT_ID,
         languageCodenames,
@@ -58,9 +58,22 @@ module.exports = {
   },
   plugins: [
     contentSource,
-    `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        // The 7-1 stylesheets still use @import and darken(); Dart Sass
+        // flags both on every file, which buries real build errors.
+        sassOptions: {
+          silenceDeprecations: [
+            'legacy-js-api',
+            'import',
+            'color-functions',
+            'global-builtin',
+          ],
+        },
+      },
+    },
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
   ],
 }

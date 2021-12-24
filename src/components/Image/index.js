@@ -1,5 +1,5 @@
 import React from 'react'
-import { ImageElement } from '@kentico/gatsby-kontent-components'
+import { ImageElement } from '@kontent-ai/gatsby-components'
 import { graphql } from 'gatsby'
 import LazyImg from './lazy-load'
 

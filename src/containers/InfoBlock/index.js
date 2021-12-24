@@ -1,4 +1,4 @@
-import { RichTextElement } from '@kentico/gatsby-kontent-components'
+import { RichTextElement } from '@kontent-ai/gatsby-components'
 import { graphql } from 'gatsby'
 import React from 'react'
 import getStyles from '../../utils/getStyles'

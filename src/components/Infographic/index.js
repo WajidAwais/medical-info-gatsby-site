@@ -1,5 +1,5 @@
 import React from 'react'
-import { RichTextElement } from '@kentico/gatsby-kontent-components'
+import { RichTextElement } from '@kontent-ai/gatsby-components'
 import { graphql } from 'gatsby'
 import Image from '../Image'
 

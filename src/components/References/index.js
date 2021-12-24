@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby'
 import React from 'react'
-import { RichTextElement } from '@kentico/gatsby-kontent-components'
+import { RichTextElement } from '@kontent-ai/gatsby-components'
 
 const References = ({ data }) => {
   const [

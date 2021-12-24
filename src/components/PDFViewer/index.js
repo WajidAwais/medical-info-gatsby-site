@@ -142,7 +142,7 @@ const PDFViewer = ({
           </Link>
         </div>
       )}
-      <AnimatePresence exitBeforeEnter>
+      <AnimatePresence mode="wait">
         {showModal && (
           <motion.div
             className="backdrop"

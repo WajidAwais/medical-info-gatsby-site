@@ -1,6 +1,6 @@
 // Turns the compact fixture files in fixtures/kontent into the two shapes the
 // site consumes: Delivery API JSON (what the browser fetches at runtime) and
-// Gatsby nodes that mirror @kentico/gatsby-source-kontent's GraphQL schema.
+// Gatsby nodes that mirror @kontent-ai/gatsby-source's GraphQL schema.
 const crypto = require('crypto')
 const fs = require('fs')
 const path = require('path')

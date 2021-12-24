@@ -1,4 +1,4 @@
-// Offline stand-in for @kentico/gatsby-source-kontent, enabled with
+// Offline stand-in for @kontent-ai/gatsby-source, enabled with
 // KONTENT_MOCK=1. It sources nodes from fixtures/kontent and publishes the
 // two Delivery API responses the browser asks for (languages, translations)
 // as static files, so a build never talks to Kontent.

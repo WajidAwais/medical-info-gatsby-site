@@ -4,7 +4,7 @@ import { FaCaretDown } from 'react-icons/fa'
 import { RiArrowRightSLine } from 'react-icons/ri'
 import { Link } from 'gatsby'
 import { useTheme } from '../../../../hooks/useTheme'
-import { ImageElement } from '@kentico/gatsby-kontent-components'
+import { ImageElement } from '@kontent-ai/gatsby-components'
 import { prepareTranslations } from '../../../../utils/prepareTranslations'
 
 export default function Dropdown({

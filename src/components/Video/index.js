@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { graphql } from 'gatsby'
-import { ImageElement } from '@kentico/gatsby-kontent-components'
+import { ImageElement } from '@kontent-ai/gatsby-components'
 import { FaYoutube } from 'react-icons/fa'
 import { ImYoutube2 } from 'react-icons/im'
 import { StaticImage } from 'gatsby-plugin-image'

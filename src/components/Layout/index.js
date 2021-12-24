@@ -5,7 +5,7 @@ import NavbarDefault from '../../containers/Navbar/variants/NavbarDefault'
 import { useTheme } from '../../hooks/useTheme'
 import ConfirmModal from '../Modal/variants/ConfirmModal'
 import { DEFAULT_LANGUAGE } from '../../utils/constants'
-import KontentSmartLink from '@kentico/kontent-smart-link'
+import KontentSmartLink from '@kontent-ai/smart-link'
 
 const checkPathNameAgainstLanguages = (tmp, actions) => {
   // SET LANGUAGE BASED ON THE PATHNAME:
