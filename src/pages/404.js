@@ -4,7 +4,8 @@ import Layout from '../components/Layout'
 import { navigate } from 'gatsby'
 import { prepareNavLinks } from '../utils/prepareNavLinks'
 import { useTheme } from '../hooks/useTheme'
-import getTranslationByKey from '../utils/getTranslation'
+import { prepareTranslations } from '../utils/prepareTranslations'
+import { searchPath } from '../utils/paths'
 import { DEFAULT_LANGUAGE } from '../utils/constants'
 import { getSelectedLanguage } from '../utils/helpers'
 import SEO from '../components/SEO'
@@ -16,7 +17,7 @@ export default function NotFound({ data }) {
   const [selectedLanguage, setSelectedLanguage] = useState(DEFAULT_LANGUAGE)
 
   useEffect(() => {
-    // Reaason for implementing this in hook: to avoid: ReferenceError: localStorage is not defined
+    // localStorage only exists in the browser, so read the preference after mount.
     const language = getSelectedLanguage(state)
     setSelectedLanguage(language.name)
   }, [])
@@ -29,11 +30,14 @@ export default function NotFound({ data }) {
   )
   const navLinks = prepareNavLinks(filteredPages[0], selectedLanguage)
 
-  let nfTranslation = null // for not-found/404 translations
-  let searchTranslation = null // for the search input box translations - placeholder
-  if (state && state.translations && state.translations.length > 0) {
-    nfTranslation = getTranslationByKey('404', state.translations)
-    searchTranslation = getTranslationByKey('Search', state.translations)
+  const nfTranslation = {
+    Title: 'Page not found',
+    Search: 'Try searching for the page you were looking for.',
+    ...prepareTranslations(state.translations, '404'),
+  }
+  const searchTranslation = {
+    Placeholder: 'Search...',
+    ...prepareTranslations(state.translations, 'Search'),
   }
 
   return (
@@ -46,35 +50,27 @@ export default function NotFound({ data }) {
       <div className="section pt-5">
         <div className="container">
           <div className="siteMap">
-            {nfTranslation && (
+            <div>
+              <h1>{nfTranslation.Title}</h1>
               <div>
-                <h1>{nfTranslation.Title}</h1>
-                <div>
-                  <p>{nfTranslation.Search}</p>
-                </div>
+                <p>{nfTranslation.Search}</p>
               </div>
-            )}
+            </div>
             <div className="search">
               <div>
                 <form
                   onSubmit={(e) => {
                     e.preventDefault()
                     const value = e.target[0].value
-                    navigate(
-                      selectedLanguage === DEFAULT_LANGUAGE
-                        ? `/search?s=${value}`
-                        : `/${selectedLanguage}/search?s=${value}`
-                    )
+                    navigate(searchPath(selectedLanguage, value))
                   }}
                 >
-                  {searchTranslation && (
-                    <input
-                      type="search"
-                      className="search__search_field"
-                      id="Search"
-                      placeholder={searchTranslation.Placeholder}
-                    />
-                  )}
+                  <input
+                    type="search"
+                    className="search__search_field"
+                    id="Search"
+                    placeholder={searchTranslation.Placeholder}
+                  />
                 </form>
               </div>
             </div>

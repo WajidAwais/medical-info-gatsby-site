@@ -1,4 +1,4 @@
-import { normaliseSlug, pagePath, pathForSlug } from './paths'
+import { normaliseSlug, pagePath, pathForSlug, searchPath } from './paths'
 import { prepareNavLinks } from './prepareNavLinks'
 import { prepareTranslations } from './prepareTranslations'
 import { getTitleForGermanyHomePage, getTitlePart } from './helpers'
@@ -24,6 +24,11 @@ describe('paths', () => {
     expect(pathForSlug('resources', 'en')).toBe('/resources')
     expect(pathForSlug('ressourcen', 'de')).toBe('/de/ressourcen')
     expect(pathForSlug('heart-failure-and-tr', 'en')).toBe('/')
+  })
+
+  it('encodes search queries', () => {
+    expect(searchPath('en', 'a&b #1')).toBe('/search?s=a%26b%20%231')
+    expect(searchPath('de', 'herz')).toBe('/de/search?s=herz')
   })
 
   it('reads event landing slugs from seo__slug', () => {

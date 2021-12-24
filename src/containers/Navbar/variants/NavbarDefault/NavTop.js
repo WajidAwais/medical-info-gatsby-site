@@ -4,6 +4,7 @@ import { MdSearch } from 'react-icons/md'
 import { navigate } from 'gatsby'
 import { useTheme } from '../../../../hooks/useTheme'
 import { prepareTranslations } from '../../../../utils/prepareTranslations'
+import { searchPath } from '../../../../utils/paths'
 
 let useClickOutside = (handler) => {
   let domNode = useRef()
@@ -61,11 +62,7 @@ const NavTop = ({ languageCode = 'en', languages = [] }) => {
             <form
               onSubmit={(e) => {
                 e.preventDefault()
-                navigate(
-                  languageCode === 'en'
-                    ? `/search?s=${searchRef.current.value}`
-                    : `/${languageCode}/search?s=${searchRef.current.value}`
-                )
+                navigate(searchPath(languageCode, searchRef.current.value))
               }}
             >
               <input

@@ -2,6 +2,15 @@ import React, { Component } from 'react'
 import * as JsSearch from 'js-search'
 import { Link } from 'gatsby'
 
+const DEFAULT_LABELS = {
+  Title: 'Search',
+  Placeholder: 'Search...',
+  Results: 'Results',
+  Of: 'of',
+  For: 'for',
+  Notfound: 'No results found.',
+}
+
 const truncateText = (text) => {
   const maxLength = 200
   if (text?.length > maxLength) {
@@ -111,8 +120,8 @@ class ClientSearch extends Component {
 
   search = (text) => {
     const { search } = this.state
-    const queryResult = search.search(text)
-    this.setState({ searchQuery: text, searchResults: queryResult })
+    const query = text || ''
+    this.setState({ searchQuery: query, searchResults: search.search(query) })
   }
 
   handleSubmit = (e) => {
@@ -121,13 +130,11 @@ class ClientSearch extends Component {
 
   render() {
     const { searchResults, searchQuery } = this.state
-    const { translation } = this.props
+    const translation = { ...DEFAULT_LABELS, ...this.props.translation }
     const queryResults = searchQuery === '' ? [] : searchResults
 
     return (
-      <>
-        {translation && (
-          <div className="container">
+      <div className="container">
             <h1>{translation.Title}</h1>
             <div className="search">
               <div>
@@ -158,7 +165,6 @@ class ClientSearch extends Component {
                           {item.name}
                         </Link>
                       </h3>
-                      {/* <p className="search__description">{item.title}</p> */}
                       <p className="search__description">
                         {item.body ? truncateText(item.body) : item.title}
                       </p>
@@ -171,9 +177,7 @@ class ClientSearch extends Component {
                 )}
               </div>
             </div>
-          </div>
-        )}
-      </>
+      </div>
     )
   }
 }

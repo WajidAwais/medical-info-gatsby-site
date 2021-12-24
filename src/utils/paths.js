@@ -30,6 +30,9 @@ const localePrefix = (language) =>
 const pathForSlug = (slug, language) =>
   `${localePrefix(language)}/${isHomeSlug(slug) ? '' : normaliseSlug(slug)}`
 
+const searchPath = (language, query) =>
+  `${localePrefix(language)}/search?s=${encodeURIComponent(query || '')}`
+
 const pagePath = (page) => pathForSlug(pageSlug(page), page.system.language)
 
 module.exports = {
@@ -41,4 +44,5 @@ module.exports = {
   pagePath,
   pageSlug,
   pathForSlug,
+  searchPath,
 }

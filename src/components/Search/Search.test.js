@@ -60,4 +60,20 @@ describe('ClientSearch', () => {
     })
     expect(screen.getByText('Nothing found')).toBeInTheDocument()
   })
+
+  it('works without CMS translations and without a ?s query', () => {
+    const errors = jest.spyOn(console, 'error').mockImplementation(() => {})
+    render(<ClientSearch data={data} engine={engine} />)
+    expect(screen.getByRole('heading', { name: 'Search' })).toBeInTheDocument()
+    expect(screen.getByPlaceholderText('Search...')).toHaveValue('')
+    expect(errors).not.toHaveBeenCalled()
+    errors.mockRestore()
+  })
+
+  it('runs the query passed in the URL', () => {
+    window.history.pushState({}, '', '/search/?s=visit')
+    render(<ClientSearch data={data} engine={engine} translation={translation} />)
+    expect(screen.getByRole('link', { name: 'Resources' })).toBeInTheDocument()
+    window.history.pushState({}, '', '/')
+  })
 })

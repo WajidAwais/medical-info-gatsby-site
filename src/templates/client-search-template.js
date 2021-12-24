@@ -4,7 +4,7 @@ import Layout from '../components/Layout'
 import ClientSearch from '../components/Search'
 import { prepareNavLinks } from '../utils/prepareNavLinks'
 import { useTheme } from '../hooks/useTheme'
-import getTranslationByKey from '../utils/getTranslation'
+import { prepareTranslations } from '../utils/prepareTranslations'
 import SEO from '../components/SEO'
 import { getSelectedLanguage } from '../utils/helpers'
 import {
@@ -20,13 +20,9 @@ export default function SearchTemplate({ pageContext, data }) {
   const { state } = useTheme()
   const navLinks = prepareNavLinks(pages, languageCode)
 
-  let searchTranslation = null
-  if (state && state.translations && state.translations.length > 0) {
-    searchTranslation = getTranslationByKey('Search', state.translations)
-  }
+  const searchTranslation = prepareTranslations(state.translations, 'Search')
 
   const [pageTitle, setPageTitle] = useState(null)
-  // Treating HF Valve ${language.region}
   useEffect(() => {
     const language = getSelectedLanguage(state)
     const search = window.location.search

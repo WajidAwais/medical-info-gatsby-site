@@ -5,6 +5,7 @@ import { navigate } from 'gatsby'
 import { DEFAULT_LANGUAGE } from '../../../../utils/constants'
 import { useTheme } from '../../../../hooks/useTheme'
 import { prepareTranslations } from '../../../../utils/prepareTranslations'
+import { searchPath } from '../../../../utils/paths'
 
 const Nav = ({
   navLinks,
@@ -32,11 +33,7 @@ const Nav = ({
           <form
             onSubmit={(e) => {
               e.preventDefault()
-              navigate(
-                languageCode === 'en'
-                  ? `/search?s=${searchRef.current.value}`
-                  : `/${languageCode}/search?s=${searchRef.current.value}`
-              )
+              navigate(searchPath(languageCode, searchRef.current.value))
             }}
           >
             <input
