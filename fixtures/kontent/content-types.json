@@ -1,0 +1,139 @@
+{
+  "site": {
+    "subpages": "modular_content",
+    "head_scripts": "text",
+    "body_scripts": "text",
+    "trust_arc": "text"
+  },
+  "footer": {
+    "social_sharing__label": "text",
+    "social_sharing__text": "text",
+    "social_sharing__sources": "multiple_choice",
+    "social_sharing__mailto": "text",
+    "external_links": "modular_content",
+    "disclaimer": "rich_text",
+    "copyright": "rich_text",
+    "address": "rich_text"
+  },
+  "page": {
+    "title": "text",
+    "url": "url_slug",
+    "show_in_navigation": "multiple_choice",
+    "social_sharing__label": "text",
+    "social_sharing__text": "text",
+    "social_sharing__sources": "multiple_choice",
+    "social_sharing__mailto": "text",
+    "intro": "modular_content",
+    "body": "modular_content",
+    "references": "modular_content",
+    "resources": "modular_content"
+  },
+  "event_landing": {
+    "seo__title": "text",
+    "seo__slug": "url_slug",
+    "title": "text",
+    "social_sharing__label": "text",
+    "social_sharing__text": "text",
+    "social_sharing__sources": "multiple_choice",
+    "social_sharing__mailto": "text",
+    "image": "modular_content",
+    "events": "modular_content",
+    "marketo_form": "modular_content"
+  },
+  "intro": {
+    "title": "text",
+    "subtitle": "text",
+    "description": "rich_text",
+    "media": "modular_content"
+  },
+  "info_block": {
+    "styling_options__background_color": "multiple_choice",
+    "styling_options__padding_top": "multiple_choice",
+    "styling_options__padding_bottom": "multiple_choice",
+    "content": "rich_text"
+  },
+  "call_to_action": {
+    "title": "text",
+    "cta": "modular_content"
+  },
+  "cta": {
+    "text": "text",
+    "link": "text"
+  },
+  "cards": {
+    "cards": "modular_content"
+  },
+  "card": {
+    "title": "text",
+    "media": "modular_content",
+    "details": "rich_text"
+  },
+  "infographics": {
+    "title": "text",
+    "layout": "multiple_choice",
+    "infographics": "modular_content"
+  },
+  "infographic": {
+    "title": "rich_text",
+    "media": "modular_content",
+    "footnote": "rich_text"
+  },
+  "table": {
+    "variant": "multiple_choice",
+    "table": "rich_text",
+    "footnote": "rich_text"
+  },
+  "references": {
+    "references": "rich_text"
+  },
+  "resources": {
+    "resources": "modular_content"
+  },
+  "resource": {
+    "title": "text",
+    "description": "text",
+    "variant": "multiple_choice",
+    "media": "modular_content",
+    "pricing__price": "multiple_choice"
+  },
+  "pdf": {
+    "pdf": "asset",
+    "media": "modular_content"
+  },
+  "image": {
+    "image": "asset",
+    "image_alt": "text"
+  },
+  "video": {
+    "video_id": "text",
+    "thumbnail": "asset"
+  },
+  "link": {
+    "title": "text",
+    "url": "text"
+  },
+  "events": {
+    "title": "text",
+    "description": "text",
+    "events": "modular_content"
+  },
+  "event": {
+    "title": "text",
+    "media": "modular_content"
+  },
+  "marketo_form": {
+    "form_number": "text",
+    "title": "text",
+    "description": "rich_text"
+  },
+  "translations": {
+    "translation": "modular_content"
+  },
+  "translation": {
+    "value": "text"
+  },
+  "basket": {
+    "title": "text",
+    "description": "rich_text"
+  }
+}

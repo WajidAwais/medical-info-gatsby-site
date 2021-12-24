@@ -1,23 +1,6 @@
 import React, { Component } from 'react'
 import * as JsSearch from 'js-search'
 import { Link } from 'gatsby'
-import { DEFAULT_LANGUAGE } from '../../utils/constants'
-
-const getUrl = (languageCode, url) => {
-  if (languageCode === DEFAULT_LANGUAGE) {
-    if (url === '/') {
-      return '/';
-    } else {
-      return `/${url}/`;
-    }
-  }
-
-  if (url === '/') {
-    return `/${languageCode}/`;
-  } else {
-    return `/${languageCode}/${url}/`;
-  }
-};
 
 const truncateText = (text) => {
   const maxLength = 200
@@ -138,7 +121,7 @@ class ClientSearch extends Component {
 
   render() {
     const { searchResults, searchQuery } = this.state
-    const { language, translation } = this.props
+    const { translation } = this.props
     const queryResults = searchQuery === '' ? [] : searchResults
 
     return (
@@ -171,10 +154,7 @@ class ClientSearch extends Component {
                   return (
                     <article className="search__item" key={index}>
                       <h3>
-                        <Link
-                          to={getUrl(language, item.url)}
-                          className="search__title"
-                        >
+                        <Link to={item.url} className="search__title">
                           {item.name}
                         </Link>
                       </h3>

@@ -1,0 +1,7 @@
+{
+  "name": "gatsby-source-kontent-fixtures",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local Gatsby source plugin that serves Kontent-shaped fixture content for offline builds",
+  "main": "index.js"
+}

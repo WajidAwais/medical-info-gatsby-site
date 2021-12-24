@@ -3,25 +3,9 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import { Link } from 'gatsby'
 import { prepareNavLinks } from '../utils/prepareNavLinks'
-import { DEFAULT_LANGUAGE } from '../utils/constants'
+import { pathForSlug } from '../utils/paths'
 import { getTitlePart } from '../utils/helpers'
 import SEO from "../components/SEO"
-
-const getUrl = (languageCode, url) => {
-  if (languageCode === DEFAULT_LANGUAGE) {
-    if (url === '/') {
-      return '/';
-    } else {
-      return `/${url}/`;
-    }
-  }
-
-  if (url === '/') {
-    return `/${languageCode}/`;
-  } else {
-    return `/${languageCode}/${url}/`;
-  }
-};
 
 const siteMapTemplate = ({ pageContext: { languageCode, path }, data }) => {
   const {
@@ -52,7 +36,7 @@ const siteMapTemplate = ({ pageContext: { languageCode, path }, data }) => {
                   const url = elements.url?.value || elements.seo__slug?.value;
                   return (elements.show_in_navigation?.value[0]?.codename === "yes" || type === "event_landing") &&
                     <h3 key={index}>
-                      <Link to={getUrl(languageCode, url)}> {elements.title?.value || elements.seo__title?.value || name}</Link>
+                      <Link to={pathForSlug(url, languageCode)}> {elements.title?.value || elements.seo__title?.value || name}</Link>
                     </h3>
                 })
               }

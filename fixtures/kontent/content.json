@@ -1,0 +1,416 @@
+{
+  "languages": [{ "codename": "en", "name": "English" }],
+  "items": [
+    {
+      "type": "site",
+      "codename": "site",
+      "name": "Site",
+      "elements": {
+        "subpages": ["home", "condition_overview", "resources", "basket", "checkout"],
+        "head_scripts": "",
+        "body_scripts": "",
+        "trust_arc": ""
+      }
+    },
+    {
+      "type": "footer",
+      "codename": "footer",
+      "name": "Footer",
+      "elements": {
+        "social_sharing__label": "Share",
+        "social_sharing__text": "Share this fixture site",
+        "social_sharing__sources": [
+          { "codename": "facebook", "name": "https://www.facebook.com/sharer/sharer.php?u=" },
+          { "codename": "linkedin", "name": "https://www.linkedin.com/sharing/share-offsite/?url=" }
+        ],
+        "social_sharing__mailto": "mailto:?subject=Fixture%20site&body=",
+        "external_links": ["link_privacy", "link_terms"],
+        "disclaimer": "<p>All copy, images and documents in this build are fixture content written for offline development. They are not medical advice.</p>",
+        "copyright": "<p>Fixture content for local builds</p>",
+        "address": "<p>Example Street 1, 00000 Sample City</p>"
+      }
+    },
+    {
+      "type": "link",
+      "codename": "link_privacy",
+      "name": "Privacy link",
+      "elements": { "title": "Privacy notice", "url": "https://example.com/privacy" }
+    },
+    {
+      "type": "link",
+      "codename": "link_terms",
+      "name": "Terms link",
+      "elements": { "title": "Terms of use", "url": "https://example.com/terms" }
+    },
+    {
+      "type": "page",
+      "codename": "home",
+      "name": "Home",
+      "elements": {
+        "title": "Home",
+        "url": "home",
+        "show_in_navigation": [{ "codename": "yes", "name": "Yes" }],
+        "social_sharing__label": "Share",
+        "social_sharing__text": "Share this page",
+        "social_sharing__sources": [
+          { "codename": "facebook", "name": "https://www.facebook.com/sharer/sharer.php?u=" },
+          { "codename": "linkedin", "name": "https://www.linkedin.com/sharing/share-offsite/?url=" }
+        ],
+        "social_sharing__mailto": "mailto:?subject=[title]&body=[slug]",
+        "intro": ["home_intro"],
+        "body": ["home_info_block", "home_call_to_action"],
+        "references": ["home_references"],
+        "resources": []
+      }
+    },
+    {
+      "type": "intro",
+      "codename": "home_intro",
+      "name": "Home intro",
+      "elements": {
+        "title": "A sample patient-information landing page",
+        "subtitle": "Fixture content for offline builds",
+        "description": "<p>This page is built from local fixture files instead of the Kontent Delivery API. It exercises the intro, info block, card, call-to-action and reference components with neutral demo copy.</p>",
+        "media": ["image_intro"]
+      }
+    },
+    {
+      "type": "image",
+      "codename": "image_intro",
+      "name": "Intro illustration",
+      "elements": {
+        "image": [{ "url": "/mock-assets/intro-illustration.svg", "width": 640, "height": 480, "type": "image/svg+xml" }],
+        "image_alt": "Abstract illustration of a heartbeat line"
+      }
+    },
+    {
+      "type": "info_block",
+      "codename": "home_info_block",
+      "name": "Home info block",
+      "elements": {
+        "styling_options__background_color": [{ "codename": "steel_light", "name": "Steel light" }],
+        "styling_options__padding_top": [{ "codename": "n3", "name": "3" }],
+        "styling_options__padding_bottom": [{ "codename": "n3", "name": "3" }],
+        "content": "<h2>Preparing for a specialist visit</h2><p>Two cards below are linked items inside a rich text element, the same way editors embed components in Kontent.</p><object type=\"application/kenticocloud\" data-type=\"item\" data-rel=\"component\" data-codename=\"home_cards\"></object>"
+      }
+    },
+    {
+      "type": "cards",
+      "codename": "home_cards",
+      "name": "Home cards",
+      "elements": { "cards": ["card_checklist", "card_questions"] }
+    },
+    {
+      "type": "card",
+      "codename": "card_checklist",
+      "name": "Checklist card",
+      "elements": {
+        "title": "Bring a symptom diary",
+        "media": ["image_card_checklist"],
+        "details": "<h3>Bring a symptom diary</h3><p>Note when symptoms start, how long they last and what you were doing. A short written record makes the appointment more useful.</p>"
+      }
+    },
+    {
+      "type": "image",
+      "codename": "image_card_checklist",
+      "name": "Checklist illustration",
+      "elements": {
+        "image": [{ "url": "/mock-assets/card-checklist.svg", "width": 480, "height": 300, "type": "image/svg+xml" }],
+        "image_alt": "Checklist with three ticked lines"
+      }
+    },
+    {
+      "type": "card",
+      "codename": "card_questions",
+      "name": "Questions card",
+      "elements": {
+        "title": "Write your questions down",
+        "media": ["image_card_questions"],
+        "details": "<h3>Write your questions down</h3><p>List the questions you want answered before the visit so nothing is forgotten in the consultation room.</p>"
+      }
+    },
+    {
+      "type": "image",
+      "codename": "image_card_questions",
+      "name": "Questions illustration",
+      "elements": {
+        "image": [{ "url": "/mock-assets/card-questions.svg", "width": 480, "height": 300, "type": "image/svg+xml" }],
+        "image_alt": "Two speech bubbles with a question mark"
+      }
+    },
+    {
+      "type": "call_to_action",
+      "codename": "home_call_to_action",
+      "name": "Home call to action",
+      "elements": { "title": "Looking for printable material?", "cta": ["cta_resources"] }
+    },
+    {
+      "type": "cta",
+      "codename": "cta_resources",
+      "name": "Resources CTA",
+      "elements": { "text": "Browse the resource library", "link": "resources" }
+    },
+    {
+      "type": "references",
+      "codename": "home_references",
+      "name": "Home references",
+      "elements": {
+        "references": "<ol><li>Fixture reference one. Example Journal of Demo Content. 2024;1:1-2.</li><li>Fixture reference two. Sample Proceedings. 2023;4:10-12.</li></ol>"
+      }
+    },
+    {
+      "type": "page",
+      "codename": "condition_overview",
+      "name": "Condition overview",
+      "elements": {
+        "title": "Condition overview",
+        "url": "condition-overview",
+        "show_in_navigation": [{ "codename": "yes", "name": "Yes" }],
+        "social_sharing__label": "Share",
+        "social_sharing__text": "Share this page",
+        "social_sharing__sources": [],
+        "social_sharing__mailto": "mailto:?subject=[title]&body=[slug]",
+        "intro": ["overview_intro"],
+        "body": ["overview_info_block"],
+        "references": [],
+        "resources": []
+      }
+    },
+    {
+      "type": "intro",
+      "codename": "overview_intro",
+      "name": "Overview intro",
+      "elements": {
+        "title": "How the stages compare",
+        "subtitle": "A table and an infographic from fixture data",
+        "description": "<p>This page shows how tables and infographics embedded in rich text are rendered.</p>",
+        "media": ["image_intro"]
+      }
+    },
+    {
+      "type": "info_block",
+      "codename": "overview_info_block",
+      "name": "Overview info block",
+      "elements": {
+        "styling_options__background_color": [],
+        "styling_options__padding_top": [{ "codename": "n2", "name": "2" }],
+        "styling_options__padding_bottom": [{ "codename": "n4", "name": "4" }],
+        "content": "<h2>Stages at a glance</h2><object type=\"application/kenticocloud\" data-type=\"item\" data-rel=\"component\" data-codename=\"overview_table\"></object><object type=\"application/kenticocloud\" data-type=\"item\" data-rel=\"component\" data-codename=\"overview_infographics\"></object>"
+      }
+    },
+    {
+      "type": "table",
+      "codename": "overview_table",
+      "name": "Stages table",
+      "elements": {
+        "variant": [{ "codename": "basic", "name": "Basic" }],
+        "table": "<table><tbody><tr><td><strong>Stage</strong></td><td><strong>Typical sign</strong></td></tr><tr><td>Early</td><td>No symptoms at rest</td></tr><tr><td>Moderate</td><td>Breathless on exertion</td></tr><tr><td>Advanced</td><td>Symptoms at rest</td></tr></tbody></table>",
+        "footnote": "<p>Illustrative fixture data only.</p>"
+      }
+    },
+    {
+      "type": "infographics",
+      "codename": "overview_infographics",
+      "name": "Overview infographics",
+      "elements": {
+        "title": "Fixture infographic",
+        "layout": [],
+        "infographics": ["infographic_bars"]
+      }
+    },
+    {
+      "type": "infographic",
+      "codename": "infographic_bars",
+      "name": "Bar infographic",
+      "elements": {
+        "title": "<h3>Visits per stage (illustrative)</h3>",
+        "media": ["image_infographic_bars"],
+        "footnote": "<p>Numbers are made up for the demo build.</p>"
+      }
+    },
+    {
+      "type": "image",
+      "codename": "image_infographic_bars",
+      "name": "Bar chart illustration",
+      "elements": {
+        "image": [{ "url": "/mock-assets/infographic-bars.svg", "width": 560, "height": 320, "type": "image/svg+xml" }],
+        "image_alt": "Bar chart with four rising bars"
+      }
+    },
+    {
+      "type": "page",
+      "codename": "resources",
+      "name": "Resources",
+      "elements": {
+        "title": "Resources",
+        "url": "resources",
+        "show_in_navigation": [{ "codename": "yes", "name": "Yes" }],
+        "social_sharing__label": "Share",
+        "social_sharing__text": "Share this page",
+        "social_sharing__sources": [],
+        "social_sharing__mailto": "mailto:?subject=[title]&body=[slug]",
+        "intro": [],
+        "body": ["resources_info_block"],
+        "references": [],
+        "resources": ["resources_library"]
+      }
+    },
+    {
+      "type": "info_block",
+      "codename": "resources_info_block",
+      "name": "Resources intro block",
+      "elements": {
+        "styling_options__background_color": [],
+        "styling_options__padding_top": [{ "codename": "n4", "name": "4" }],
+        "styling_options__padding_bottom": [{ "codename": "n2", "name": "2" }],
+        "content": "<h1>Resource library</h1><p>Download a document or add a free printed copy to the basket.</p>"
+      }
+    },
+    {
+      "type": "resources",
+      "codename": "resources_library",
+      "name": "Resource library",
+      "elements": { "resources": ["resource_visit_guide", "resource_diary"] }
+    },
+    {
+      "type": "resource",
+      "codename": "resource_visit_guide",
+      "name": "Visit guide",
+      "elements": {
+        "title": "Preparing for your appointment",
+        "description": "A two-page sample guide used to exercise the PDF resource card.",
+        "variant": [{ "codename": "pdf", "name": "PDF" }],
+        "media": ["pdf_visit_guide"],
+        "pricing__price": [{ "codename": "free", "name": "Free" }]
+      }
+    },
+    {
+      "type": "resource",
+      "codename": "resource_diary",
+      "name": "Symptom diary",
+      "elements": {
+        "title": "Symptom diary template",
+        "description": "A printable diary page; the download is the same sample PDF.",
+        "variant": [{ "codename": "pdf", "name": "PDF" }],
+        "media": ["pdf_diary"],
+        "pricing__price": []
+      }
+    },
+    {
+      "type": "pdf",
+      "codename": "pdf_visit_guide",
+      "name": "Visit guide PDF",
+      "elements": {
+        "pdf": [{ "url": "/mock-assets/sample-guide.pdf", "type": "application/pdf" }],
+        "media": ["image_resource_cover"]
+      }
+    },
+    {
+      "type": "pdf",
+      "codename": "pdf_diary",
+      "name": "Diary PDF",
+      "elements": {
+        "pdf": [{ "url": "/mock-assets/sample-guide.pdf", "type": "application/pdf" }],
+        "media": ["image_resource_cover"]
+      }
+    },
+    {
+      "type": "image",
+      "codename": "image_resource_cover",
+      "name": "Resource cover",
+      "elements": {
+        "image": [{ "url": "/mock-assets/resource-cover.svg", "width": 420, "height": 560, "type": "image/svg+xml" }],
+        "image_alt": "Cover of a sample document"
+      }
+    },
+    {
+      "type": "page",
+      "codename": "basket",
+      "name": "Basket",
+      "elements": {
+        "title": "Basket",
+        "url": "basket",
+        "show_in_navigation": [{ "codename": "no", "name": "No" }],
+        "social_sharing__sources": [],
+        "intro": [],
+        "body": [],
+        "references": [],
+        "resources": []
+      }
+    },
+    {
+      "type": "page",
+      "codename": "checkout",
+      "name": "Checkout",
+      "elements": {
+        "title": "Checkout",
+        "url": "checkout",
+        "show_in_navigation": [{ "codename": "no", "name": "No" }],
+        "social_sharing__sources": [],
+        "intro": [],
+        "body": [],
+        "references": [],
+        "resources": []
+      }
+    },
+    {
+      "type": "translations",
+      "codename": "translations",
+      "name": "Translations",
+      "elements": {
+        "translation": [
+          "translation_search",
+          "translation_404",
+          "translation_basket",
+          "translation_checkout",
+          "translation_cards",
+          "translation_resource"
+        ]
+      }
+    },
+    {
+      "type": "translation",
+      "codename": "translation_search",
+      "name": "Search",
+      "elements": {
+        "value": "{\"Title\":\"Search\",\"Search\":\"Search\",\"Placeholder\":\"Search the site...\",\"Results\":\"Results\",\"Of\":\"of\",\"For\":\"for\",\"Notfound\":\"Nothing matched your search.\"}"
+      }
+    },
+    {
+      "type": "translation",
+      "codename": "translation_404",
+      "name": "404",
+      "elements": {
+        "value": "{\"Title\":\"Page not found\",\"Search\":\"Try searching for what you were looking for.\"}"
+      }
+    },
+    {
+      "type": "translation",
+      "codename": "translation_basket",
+      "name": "Basket",
+      "elements": {
+        "value": "{\"Title\":\"Basket\",\"EmptyBasket\":\"No resources have been added to the basket yet.\",\"Link\":\"Go to basket\",\"ResourceOrder\":\"Resource order\"}"
+      }
+    },
+    {
+      "type": "translation",
+      "codename": "translation_checkout",
+      "name": "Checkout",
+      "elements": {
+        "value": "{\"Title\":\"My orders\",\"Quantity\":\"Quantity\",\"NextStep\":\"Next\",\"EmptyCart\":\"There is nothing in your basket.\",\"AddedToCart\":\" has been added to your basket.\",\"ViewBasket\":\"View basket\"}"
+      }
+    },
+    {
+      "type": "translation",
+      "codename": "translation_cards",
+      "name": "Cards",
+      "elements": { "value": "{\"Link\":\"Watch now\"}" }
+    },
+    {
+      "type": "translation",
+      "codename": "translation_resource",
+      "name": "Resource",
+      "elements": { "value": "{\"Free\":\"Free\",\"AddToOrder\":\"Add to order\",\"Close\":\"Close\"}" }
+    }
+  ]
+}

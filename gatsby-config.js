@@ -3,6 +3,49 @@ require('dotenv').config({
 })
 
 require('dotenv').config()
+
+// KONTENT_MOCK=1 builds the site from fixtures/kontent instead of the
+// Kontent Delivery API, so it can be built and tested without credentials.
+const useFixtures = process.env.KONTENT_MOCK === '1'
+
+if (useFixtures) {
+  Object.assign(process.env, {
+    GATSBY_KONTENT_MOCK: '1',
+    GATSBY_KONTENT_PROJECT_ID: 'fixture-project',
+    GATSBY_KONTENT_LANGUAGE_CODENAMES: 'en',
+    GATSBY_DELIVERY_API_URL: '/mock-delivery/',
+    GATSBY_HOME_PAGE_SLUGS: 'home',
+  })
+}
+
+const languageCodenames = (process.env.GATSBY_KONTENT_LANGUAGE_CODENAMES || '')
+  .split(',')
+  .map((lang) => lang.trim())
+  .filter(Boolean)
+
+const contentSource = useFixtures
+  ? {
+      resolve: `gatsby-source-kontent-fixtures`,
+      options: {
+        path: `${__dirname}/fixtures/kontent`,
+        projectId: process.env.GATSBY_KONTENT_PROJECT_ID,
+        logoReplacement: `${__dirname}/fixtures/kontent/assets/demo-logo.svg`,
+      },
+    }
+  : {
+      resolve: `@kentico/gatsby-source-kontent`,
+      options: {
+        projectId: process.env.GATSBY_KONTENT_PROJECT_ID,
+        languageCodenames,
+      },
+    }
+
+if (!useFixtures && (!process.env.GATSBY_KONTENT_PROJECT_ID || !languageCodenames.length)) {
+  throw new Error(
+    'Set GATSBY_KONTENT_PROJECT_ID and GATSBY_KONTENT_LANGUAGE_CODENAMES (see .env.example), or build with KONTENT_MOCK=1.'
+  )
+}
+
 module.exports = {
   siteMetadata: {
     title: `Treating HF`,
@@ -14,15 +57,7 @@ module.exports = {
     trustArc: `https://consent.trustarc.com/notice?domain=edwards_ccpa.com&c=teconsent&js=nj&noticeType=bb&gtm=1`
   },
   plugins: [
-    {
-      resolve: `@kentico/gatsby-source-kontent`,
-      options: {
-        projectId: process.env.GATSBY_KONTENT_PROJECT_ID,
-        languageCodenames: process.env.GATSBY_KONTENT_LANGUAGE_CODENAMES.split(
-            ','
-        ).map((lang) => lang.trim()),
-      },
-    },
+    contentSource,
     `gatsby-plugin-sass`,
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
