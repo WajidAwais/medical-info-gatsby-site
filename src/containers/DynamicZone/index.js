@@ -18,18 +18,19 @@ const DynamicZone = ({
       case 'info_block':
         return (
           <InfoBlock
+            key={id}
             data={elements}
             id={id}
-            code={codename}
             socialSharing={socialSharing}
           />
         )
       case 'call_to_action':
         return (
           <CallToAction
+            key={id}
             data={elements}
             id={id}
-            code={codename}
+            codename={codename}
             languageCode={languageCode}
           />
         )

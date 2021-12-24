@@ -76,7 +76,7 @@ const Pdf = ({
       {showBanner && (
         <div className=" order-banner">
           <span>
-            "{title}"
+            &ldquo;{title}&rdquo;
             {translatedItemCheckout?.AddedToCart
               ? translatedItemCheckout?.AddedToCart
               : ' has been added to your cart!'}
@@ -118,7 +118,15 @@ const Pdf = ({
           <PDFViewer
             showModal={showModal}
             setShowModal={setShowModal}
-            modalData={{ title, description, url, image, price }}
+            modalData={{
+              id,
+              codename: contentCodename,
+              title,
+              description,
+              url,
+              image,
+              price,
+            }}
             trigger={
               'This information is not a substitute for talking with your doctor.'
             }

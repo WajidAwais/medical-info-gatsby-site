@@ -44,13 +44,10 @@ const PDFViewer = ({
   setShowModal,
   languageCode = 'en',
 }) => {
-  const { title, description, url, image, price } = modalData
+  const { id, codename, title, description, url, image, price } = modalData
   const { state, actions } = useTheme()
-  const [orders, setOrders] = useState([])
   const [showBanner, setShowBanner] = useState(false)
   const [quantity, setQuantity] = useState(1)
-  const id = 123
-  const codename = '123'
   //disable the scroll when modal is open
   useDisableBodyScroll(showModal)
   //modal should close when clicked outside
@@ -59,17 +56,15 @@ const PDFViewer = ({
   })
   //modal should close when escape is pressed
   useEffect(() => {
-    if (state.orders) {
-      setOrders(state.orders)
-    }
     const close = (e) => {
-      if (e.keyCode === 27) {
-        handleClose()
+      if (e.key === 'Escape') {
+        setShowModal(false)
+        setQuantity(1)
       }
     }
     window.addEventListener('keydown', close)
     return () => window.removeEventListener('keydown', close)
-  })
+  }, [setShowModal])
 
   const handleQuantityDecrease = () => {
     setQuantity(quantity - 1 < 1 ? 1 : quantity - 1)
@@ -80,21 +75,10 @@ const PDFViewer = ({
   }
 
   const handleAddToCart = () => {
-    let count = quantity
-    while (count) {
-      const order = {
-        title,
-        description,
-        id,
-        image,
-        locale: languageCode,
-      }
-      const tmp = orders
-      tmp.push(order)
-      actions.changeOrders(tmp)
-      setOrders(tmp)
-      count--
-    }
+    actions.changeOrders([
+      ...state.orders,
+      { title, description, id, image, locale: languageCode, count: quantity },
+    ])
     handleClose()
     setShowBanner(true)
     setTimeout(() => {
@@ -124,7 +108,7 @@ const PDFViewer = ({
       {showBanner && (
         <div className=" order-banner">
           <span>
-            "{title}"
+            &ldquo;{title}&rdquo;
             {translatedItemCheckout?.AddedToCart
               ? translatedItemCheckout?.AddedToCart
               : ' has been added to your cart'}
