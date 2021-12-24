@@ -1,0 +1,10 @@
+name: thv-headless
+
+services:
+  web:
+    build:
+      context: .
+      args:
+        KONTENT_MOCK: "1"
+    ports:
+      - "8080:80"

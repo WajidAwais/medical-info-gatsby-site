@@ -3,6 +3,9 @@
   "author": "Edwards",
   "license": "MIT",
   "private": true,
+  "engines": {
+    "node": ">=22 <23"
+  },
   "scripts": {
     "develop": "gatsby develop",
     "start": "gatsby develop",
