@@ -88,6 +88,7 @@ describe('pageEntries', () => {
       name: 'about',
     })
     expect(entries[2]).toMatchObject({ title: 'Card title', body: 'Card body' })
+    expect(entries[1].body).toBe('Block')
   })
 
   it('indexes resource pages without an intro', () => {

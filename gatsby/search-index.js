@@ -130,7 +130,17 @@ const SEARCH_INDEX_QUERY = `
   }
 `
 
-const htmlToText = (html) => (html ? convert(html, { wordwrap: false }) : '')
+// html-to-text upper-cases headings by default, which reads as shouting in
+// result snippets.
+const HTML_TO_TEXT_OPTIONS = {
+  wordwrap: false,
+  selectors: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].map((selector) => ({
+    selector,
+    options: { uppercase: false },
+  })),
+}
+
+const htmlToText = (html) => (html ? convert(html, HTML_TO_TEXT_OPTIONS) : '')
 
 const linked = (element) => (element && element.value) || []
 
